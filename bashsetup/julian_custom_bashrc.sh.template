@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# setup main environment variables
+
+export BASH_SETUP_ROOT=<<<BASH_SETUP_ROOT>>>
+
+green_colour="\e[0;32m"
+light_green_colour="\e[1;32m"
+blue_colour="\e[0;34m"
+light_blue_colour="\e[1;34m"
+cyan_colour="\e[0;36m"
+light_cyan_colour="\e[1;36m"
+none_colour="\e[m"
+
+export PS1="\[$light_green_colour\]\u\[$blue_colour\]@\[$cyan_colour\]\h\[$none_colour\]:\w> "
+
+export TERM=xterm-color
+
+# setup main aliases
+
+
+
