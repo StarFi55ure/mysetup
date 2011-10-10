@@ -12,7 +12,8 @@ cyan_colour="\e[0;36m"
 light_cyan_colour="\e[1;36m"
 none_colour="\e[m"
 
-export PS1="\[$light_green_colour\]\u\[$blue_colour\]@\[$cyan_colour\]\h\[$none_colour\]:\w> "
+export PS1="\[$light_green_colour\]\u\[$blue_colour\]@\[$cyan_colour\]\h\[$none_colour\]:\w
+$ "
 export EDITOR=vim 
 export TERM=xterm-color
 
