@@ -25,6 +25,19 @@ if [ $grep_status = 1 ]; then
     echo "" >> $HOME/.bashrc
 fi
 
+##################################################################
+# Tmux configuration file
+##################################################################
+
+TMUX_CONF_TEMPLATE=$BASH_SETUP_ROOT/tmux.conf.template
+
+sed -e "" $TMUX_CONF_TEMPLATE > tmux.conf
+rm -f ~/.tmux.conf
+cp tmux.conf ~/.tmux.conf
+
+
+
+
 echo "Done running setup"
 exit 0
 
