@@ -17,6 +17,8 @@ $ "
 export EDITOR=vim 
 export TERM=xterm-color
 
+export PATH=$HOME/apps/bin:$PATH
+
 # setup main aliases
 
 
