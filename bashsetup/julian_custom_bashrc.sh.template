@@ -21,5 +21,7 @@ export PATH=$HOME/apps/bin:$PATH
 
 # setup main aliases
 
-
+if [ -x $HOME/apps/tmux/bin/tmux ]; then
+    alias tmux=$HOME/apps/tmux/bin/tmux
+fi
 
