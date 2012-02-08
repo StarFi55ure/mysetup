@@ -15,7 +15,12 @@ none_colour="\e[m"
 export PS1="\[$light_green_colour\]\u\[$blue_colour\]@\[$cyan_colour\]\h\[$none_colour\]:\w
 $ "
 export EDITOR=vim 
+
+# set the TERM env variable
 export TERM=xterm-color
+if [ -n $TMUX ]; then
+    export TERM=screen-256color
+fi
 
 export PATH=$HOME/apps/bin:$PATH
 
