@@ -24,6 +24,10 @@ fi
 
 export PATH=$HOME/apps/bin:$PATH
 
+# setup main Environment variables
+
+export M2_REPO="$HOME/.m2/repository"
+
 # setup main aliases
 
 if [ -x $HOME/apps/tmux/bin/tmux ]; then
