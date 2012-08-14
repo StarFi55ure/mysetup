@@ -34,3 +34,7 @@ if [ -x $HOME/apps/tmux/bin/tmux ]; then
     alias tmux=$HOME/apps/tmux/bin/tmux
 fi
 
+# setup bash conveniences
+
+stty -ixon
+
