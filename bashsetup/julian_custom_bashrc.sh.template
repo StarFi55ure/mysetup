@@ -28,6 +28,9 @@ export PATH=$HOME/apps/bin:$PATH
 
 export M2_REPO="$HOME/.m2/repository"
 
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS="-N -R"
+
 # setup main aliases
 
 if [ -x $HOME/apps/tmux/bin/tmux ]; then
