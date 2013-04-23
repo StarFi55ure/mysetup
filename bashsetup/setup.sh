@@ -35,8 +35,18 @@ sed -e "" $TMUX_CONF_TEMPLATE > tmux.conf
 rm -f ~/.tmux.conf
 cp tmux.conf ~/.tmux.conf
 
+##################################################################
+# Git configuration
+##################################################################
 
+GIT_USER_CONFIG=$BASH_SETUP_ROOT/gitconfig
 
+if [ -f $HOME/.gitconfig ]; then
+    echo "Removing old gitconfig from home directory"
+    rm $HOME/.gitconfig
+fi
+echo "Linking gitconfig to home dir"
+ln -s $GIT_USER_CONFIG $HOME/.gitconfig
 
 echo "Done running setup"
 exit 0
