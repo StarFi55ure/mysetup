@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# bash settings
+
+set -o vi
+
 # setup main environment variables
 
 export BASH_SETUP_ROOT=<<<BASH_SETUP_ROOT>>>
