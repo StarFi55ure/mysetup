@@ -27,6 +27,9 @@ if [ -n $TMUX ]; then
 fi
 
 export PATH=$HOME/apps/bin:$PATH
+export PATH=$HOME/apps/nodejs/bin:$PATH
+export PATH=$HOME/apps/pypy-2.1/bin:$PATH
+export PATH=$HOME/apps/nodewk:$PATH
 
 # setup main Environment variables
 
