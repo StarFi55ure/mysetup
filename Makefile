@@ -1,7 +1,7 @@
 
-.PHONY: all bashsetup myvim
+.PHONY: all zshsetup myvim
 
-SUBDIRS = bashsetup myvim
+SUBDIRS = zshsetup myvim
 
 all: git-init $(SUBDIRS)
 	@echo "All Done :-)"

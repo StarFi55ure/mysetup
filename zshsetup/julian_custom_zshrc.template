@@ -1,0 +1,47 @@
+#!/usr/bin/env zsh
+
+# setup main environment variables
+
+export ZSH_SETUP_ROOT=<<<ZSH_SETUP_ROOT>>>
+
+export EDITOR=vim 
+
+# set the TERM env variable
+export TERM=xterm-color
+if [ -n $TMUX ]; then
+    export TERM=screen-256color
+fi
+
+export PATH=$HOME/apps/bin:$PATH
+export PATH=$HOME/apps/nodejs/bin:$PATH
+export PATH=$HOME/apps/pypy-2.1/bin:$PATH
+export PATH=$HOME/apps/nodewk:$PATH
+
+# setup main Environment variables
+
+export M2_REPO="$HOME/.m2/repository"
+
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS="-N -R"
+
+# setup main aliases
+
+if [ -x $HOME/apps/tmux/bin/tmux ]; then
+    alias tmux=$HOME/apps/tmux/bin/tmux
+fi
+
+# setup function autoloading 
+
+fpath=($ZSH_SETUP_ROOT/funcs $fpath)
+
+# setup my prompt
+autoload -U colors
+colors 
+
+autoload -U colortest
+autoload -U spectrum
+spectrum
+
+autoload -U prompt_julian_setup
+promptinit
+prompt julian

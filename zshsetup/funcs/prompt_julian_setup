@@ -1,0 +1,36 @@
+
+
+function prompt_julian_setup() {
+
+    function prompt_setcolor() {
+        local return_value=$1
+        local text=$2
+        local foreground=$3
+        local background=$4
+
+        if [ -n $background ]; then
+            export $return_value="%{$FG[$foreground]$BG[$background]%}$text%{$reset_color%}"
+        else
+            export $return_value="%{$FG[$foreground]%}$text%{$reset_color%}"
+        fi
+    }
+
+
+    prompt_setcolor PROMPT_USERNAME "%n" 046
+    prompt_setcolor PROMPT_HOST "%M" 033
+    prompt_setcolor PROMPT_LOCATION "%~" 178
+    prompt_setcolor PROMPT_TIME_LEFT "[" 046
+    prompt_setcolor PROMPT_TIME_RIGHT "]" 046
+    prompt_setcolor PROMPT_TIME "%*" 213
+
+    prompt_setcolor PROMPT_LB_TOP "┏" 226
+    prompt_setcolor PROMPT_LB_MID "┃" 226
+    prompt_setcolor PROMPT_LB_BOT "┗" 226
+
+    PROMPT="
+${PROMPT_LB_TOP} $PROMPT_TIME_LEFT$PROMPT_TIME$PROMPT_TIME_RIGHT $PROMPT_USERNAME@$PROMPT_HOST: (git) master * >
+$PROMPT_LB_MID $PROMPT_LOCATION
+$PROMPT_LB_BOT $> "
+
+
+}
