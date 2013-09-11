@@ -3,34 +3,48 @@
 function prompt_julian_setup() {
 
     function prompt_setcolor() {
-        local return_value=$1
-        local text=$2
-        local foreground=$3
-        local background=$4
+        local text=$1
+        local foreground=$2
+        local background=$3
 
         if [ -n $background ]; then
-            export $return_value="%{$FG[$foreground]$BG[$background]%}$text%{$reset_color%}"
+            echo "%{$FG[$foreground]$BG[$background]%}$text%{$reset_color%}"
         else
-            export $return_value="%{$FG[$foreground]%}$text%{$reset_color%}"
+            echo "%{$FG[$foreground]%}$text%{$reset_color%}"
         fi
+    }
+    
+    function git_prompt_info() {
+        local git_info=""
+
+        inside_git=`git rev-parse --is-inside-work-tree 2>&1 > /dev/null`
+        if [ $? = 0 ]; then
+            git_info="(git)"
+
+            current_branch=`git status -s -b | awk '{print $2;}' | head -n1`
+            git_info="$git_info $current_branch"
+        else
+            git_info=""
+        fi
+
+        echo $git_info
     }
 
 
-    prompt_setcolor PROMPT_USERNAME "%n" 046
-    prompt_setcolor PROMPT_HOST "%M" 033
-    prompt_setcolor PROMPT_LOCATION "%~" 178
-    prompt_setcolor PROMPT_TIME_LEFT "[" 046
-    prompt_setcolor PROMPT_TIME_RIGHT "]" 046
-    prompt_setcolor PROMPT_TIME "%*" 213
+    PROMPT='$(prompt_setcolor "┏" 226)'
+    PROMPT="$PROMPT"'$(prompt_setcolor "[" 046)'
+    PROMPT="$PROMPT"'$(prompt_setcolor "%*" 213)'
+    PROMPT="$PROMPT"'$(prompt_setcolor "]" 046)'
 
-    prompt_setcolor PROMPT_LB_TOP "┏" 226
-    prompt_setcolor PROMPT_LB_MID "┃" 226
-    prompt_setcolor PROMPT_LB_BOT "┗" 226
+    PROMPT="$PROMPT "'$(prompt_setcolor "%n" 046)'
+    PROMPT="$PROMPT@"'$(prompt_setcolor "%M" 033)'
+    PROMPT="$PROMPT: "'$(prompt_setcolor "$(git_prompt_info)" 046)'
 
-    PROMPT="
-${PROMPT_LB_TOP} $PROMPT_TIME_LEFT$PROMPT_TIME$PROMPT_TIME_RIGHT $PROMPT_USERNAME@$PROMPT_HOST: (git) master * >
-$PROMPT_LB_MID $PROMPT_LOCATION
-$PROMPT_LB_BOT $> "
+    PROMPT="$PROMPT
+"'$(prompt_setcolor "┃" 226)'
+    PROMPT="$PROMPT "'$(prompt_setcolor "%~" 178)'
 
+    PROMPT="$PROMPT
+"'$(prompt_setcolor "┗" 226)'
 
 }

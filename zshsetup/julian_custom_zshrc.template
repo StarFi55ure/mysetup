@@ -35,6 +35,7 @@ fi
 fpath=($ZSH_SETUP_ROOT/funcs $fpath)
 
 # setup my prompt
+setopt PROMPT_SUBST
 autoload -U colors
 colors 
 
