@@ -46,3 +46,9 @@ spectrum
 autoload -U prompt_julian_setup
 promptinit
 prompt julian
+
+# setup aliases
+
+alias editmysetup="cd ~/.mysetup"
+alias ls="ls --color=auto -Flash"
+
