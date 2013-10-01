@@ -1,13 +1,10 @@
 
-.PHONY: all zshsetup myvim
+.PHONY: all zshsetup
 
-SUBDIRS = zshsetup myvim
+SUBDIRS = zshsetup
 
-all: git-init $(SUBDIRS)
+all: $(SUBDIRS)
 	@echo "All Done :-)"
-
-git-init:
-	git submodule update --recursive
 
 $(SUBDIRS):
 	$(MAKE) -C $@
