@@ -1,4 +1,4 @@
-
+#!/bin/zsh
 
 function prompt_julian_setup() {
 
@@ -30,22 +30,38 @@ function prompt_julian_setup() {
         echo $git_info
     }
 
+    function python_virtual_env() {
 
-    PROMPT='$(prompt_setcolor "┏" 226)'
-    PROMPT="$PROMPT"'$(prompt_setcolor "[" 046)'
-    PROMPT="$PROMPT"'$(prompt_setcolor "%*" 213)'
-    PROMPT="$PROMPT"'$(prompt_setcolor "]" 046)'
+        local python_virtual_env_info=""
 
-    PROMPT="$PROMPT "'$(prompt_setcolor "%n" 046)'
-    PROMPT="$PROMPT@"'$(prompt_setcolor "%M" 033)'
-    PROMPT="$PROMPT: "'$(prompt_setcolor "$(git_prompt_info)" 046)'
+        if [ -n "${VIRTUAL_ENV}" ]; then;
+            python_virtual_env_info=" (PyEnv: `basename $VIRTUAL_ENV`)"
+        fi
 
-    PROMPT="$PROMPT
+        echo $python_virtual_env_info
+    }
+
+    SEG1_PROMPT='$(prompt_setcolor "┏" 226)'
+    SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "[" 046)'
+    SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "%*" 213)'
+    SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "]" 046)'
+
+    SEG1_PROMPT="$SEG1_PROMPT "'$(prompt_setcolor "%n" 046)'
+    SEG1_PROMPT="$SEG1_PROMPT@"'$(prompt_setcolor "%M" 033)'
+    SEG1_PROMPT="$SEG1_PROMPT: "'$(prompt_setcolor "$(git_prompt_info)" 046)'
+    
+    SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "$(python_virtual_env)" 142)'
+
+    SEG2_PROMPT="$SEG1_PROMPT
 "'$(prompt_setcolor "┃" 226)'
-    PROMPT="$PROMPT "'$(prompt_setcolor "%~" 178)'
+    SEG2_PROMPT="$SEG2_PROMPT "'$(prompt_setcolor "%~" 178)'
 
-    PROMPT="$PROMPT
+    SEG2_PROMPT="$SEG2_PROMPT
 "'$(prompt_setcolor "┗" 226)'
-    PROMPT="$PROMPT> "
+    SEG2_PROMPT="$SEG2_PROMPT> "
 
+    PROMPT=$SEG2_PROMPT
+    
 }
+
+

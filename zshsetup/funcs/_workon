@@ -1,0 +1,11 @@
+#compdef workon
+
+function _workon() {
+    for i in $(/bin/ls -d $VIRTUAL_ENVS_ROOT/*(/)); do 
+        compadd "$@" `basename $i`
+    done
+
+    return 0
+}
+
+_workon $@

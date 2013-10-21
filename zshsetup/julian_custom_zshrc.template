@@ -52,3 +52,15 @@ prompt julian
 alias editmysetup="cd ~/.mysetup"
 alias ls="ls --color=auto -Flash"
 
+################################################################################
+# Python Virtualenv system
+################################################################################
+
+autoload -U mkvirtualenv
+autoload -U workon
+
+
+export VIRTUAL_ENVS_ROOT=$HOME/.virtualenvs
+
+
+
