@@ -1,0 +1,37 @@
+#!/usr/bin/env zsh
+
+echo "Building Nodejs v0.10.24..."
+
+function nodejs_build() {
+
+    if [ -d $APPS_PATH/nodejs ]; then
+        rm -fr $APPS_PATH/nodejs
+    fi
+
+    cd $APPS_BUILD_PATH
+
+
+    source_file=node-v0.10.24.tar.gz
+
+    download_file $source_file http://nodejs.org/dist/v0.10.24/node-v0.10.24.tar.gz
+    
+    tar xf $source_file
+    cd node-v0.10.24
+
+    ./configure --prefix=$APPS_PATH/nodejs 
+
+    make -j2
+    make install 
+
+    cd $APPS_BUILD_PATH
+
+    rm -fr $source_file
+    
+    cd $ZSH_SETUP_ROOT 
+}
+
+function nodejs_postbuild() {
+    $APPS_PATH/nodejs/bin/npm install -g yo generator-generator
+}
+
+

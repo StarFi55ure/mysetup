@@ -4,17 +4,24 @@
 # Main Custom zshrc
 #################################################################
 
-
-# check if zshrc already has custom setting include
-grep "julian_custom_zshrc" ~/.zshrc > /dev/null
-grep_status=$?
+# expand variables in template scripts
 
 ZSH_SETUP_ROOT=`pwd`
 ZSH_CUSTOM_RC_TEMPLATE=$ZSH_SETUP_ROOT/julian_custom_zshrc.template
 ZSH_CUSTOM_RC_FILE=$ZSH_SETUP_ROOT/julian_custom_zshrc
 
-# configure setup root in main custom zshrc
 sed -e "s:<<<ZSH_SETUP_ROOT>>>:$ZSH_SETUP_ROOT:g" $ZSH_CUSTOM_RC_TEMPLATE > $ZSH_CUSTOM_RC_FILE
+
+ZSH_BOOTSTRAP_TEMPLATE=$ZSH_SETUP_ROOT/bootstrap/bootstrap.zsh.template
+ZSH_BOOTSTRAP_FILE=$ZSH_SETUP_ROOT/bootstrap/bootstrap.zsh
+
+sed -e "s:<<<ZSH_SETUP_ROOT>>>:$ZSH_SETUP_ROOT:g" $ZSH_BOOTSTRAP_TEMPLATE > $ZSH_BOOTSTRAP_FILE
+
+
+# check if zshrc already has custom setting include
+grep "julian_custom_zshrc" ~/.zshrc > /dev/null
+grep_status=$?
+
 
 # add custom zshrc to user zshrc
 if [ $grep_status = 1 ]; then
