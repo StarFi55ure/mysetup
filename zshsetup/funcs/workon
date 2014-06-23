@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/zsh
 
 function workon() {
     echo "Switching to Virtual Env $1"

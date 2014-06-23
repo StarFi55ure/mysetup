@@ -1,0 +1,29 @@
+#!/usr/bin/zsh 
+
+function chpwd() {
+
+    # check if nodejs needs to be setup
+    
+    if [ -d $PWD/node_modules ]; then
+        export PRE_NODEJS_PATH=$PATH
+        export PATH=$PWD/node_module/.bin:$PATH
+    else
+        if [ ! -z "$PRE_NODEJS_PATH" ]; then
+            export PATH=$PRE_NODEJS_PATH
+            unset PRE_NODEJS_PATH
+        fi
+    fi
+
+
+    # activate private python virtual environments
+    if [ -d $PWD/.pyenv ]; then
+        export VIRTUAL_ENV_DISABLE_PROMPT=1
+        source $PWD/.pyenv/bin/activate
+        hash -r
+    else 
+        declare -f deactivate > /dev/null
+        if [[ $? != 1 ]]; then 
+            deactivate
+        fi
+    fi
+}
