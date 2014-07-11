@@ -6,7 +6,7 @@ function chpwd() {
     
     if [ -d $PWD/node_modules ]; then
         export PRE_NODEJS_PATH=$PATH
-        export PATH=$PWD/node_module/.bin:$PATH
+        export PATH=$PWD/node_modules/.bin:$PATH
     else
         if [ ! -z "$PRE_NODEJS_PATH" ]; then
             export PATH=$PRE_NODEJS_PATH
