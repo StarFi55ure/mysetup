@@ -4,3 +4,4 @@ unbind % # Remove default binding
 bind | split-window -h
 bind - split-window -v
 
+bind-key a send-prefix

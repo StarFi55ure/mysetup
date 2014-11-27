@@ -60,9 +60,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 
-# setup main aliases
-
-alias g='git'
 
 # setup tmux
 if [ -x $HOME/apps/tmux/bin/tmux ]; then
@@ -87,10 +84,12 @@ autoload -U prompt_julian_setup
 promptinit
 prompt julian
 
-# setup aliases
+# setup main aliases
 
-alias editmyvim="cd ~/.myvim"
-alias editmysetup="cd ~/.mysetup"
+alias ems='cd $ZSH_SETUP_ROOT'
+alias emv='cd .myvim'
+
+alias g='git'
 alias ll="ls --color=auto -Flash"
 alias nicedate="date +'%Y-%m-%d'"
 
