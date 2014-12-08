@@ -5,3 +5,4 @@ bind | split-window -h
 bind - split-window -v
 
 bind-key a send-prefix
+set-window-option -g automatic-rename off

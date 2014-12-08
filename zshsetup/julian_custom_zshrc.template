@@ -1,5 +1,14 @@
 #!/usr/bin/env zsh
 
+#setup platform aliases for coreutils commands
+
+platform=`uname`
+if [[ $platform == 'Darwin' ]]; then
+    alias ls=gls
+    alias readlink=greadlink
+    alias dircolors=gdircolors
+fi
+
 # setup main environment variables
 
 export ZSH_SETUP_ROOT=<<<ZSH_SETUP_ROOT>>>
@@ -36,6 +45,7 @@ fi
 
 export PATH=$HOME/apps/bin:$PATH
 export PATH=$HOME/apps/nodejs/bin:$PATH
+export PATH=/usr/local/bin:$PATH
 
 # Use modern completion system
 autoload -Uz compinit
