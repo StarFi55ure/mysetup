@@ -110,6 +110,8 @@ alias nicedate="date +'%Y-%m-%d'"
 autoload -U mkvirtualenv
 autoload -U workon
 
+export VIRTUAL_ENVS_ROOT=$HOME/.virtualenvs
+
 ################################################################################
 # General utility functions
 ################################################################################
@@ -117,9 +119,11 @@ autoload -U workon
 autoload -U chpwd
 chpwd_functions=('setup_nodejs')
 
+################################################################################
+# shell functions
+################################################################################
 
-
-export VIRTUAL_ENVS_ROOT=$HOME/.virtualenvs
+export SHELL_BIN_ROOT=$ZSH_SETUP_ROOT/bin
 
 
 
