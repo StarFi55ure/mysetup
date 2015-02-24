@@ -1,6 +1,42 @@
 #!/usr/bin/env zsh
 
+###################################################
+# setup main environment variables
+###################################################
+
+export ZSH_SETUP_ROOT=<<<ZSH_SETUP_ROOT>>>
+
+export M2_REPO="$HOME/.m2/repository"
+export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
+export LESS="-R"
+
+export EDITOR=vim 
+
+export PATH=$HOME/apps/bin:$PATH
+export PATH=$HOME/apps/nodejs/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+
+# set the TERM env variable
+export TERM=xterm-color
+if [ -n $TMUX ]; then
+    export TERM=screen-256color
+fi
+
+export VIRTUAL_ENVS_ROOT=$HOME/.virtualenvs
+
+
+export SHELL_BIN_ROOT=$ZSH_SETUP_ROOT/bin
+
+# # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+###################################################
 #setup platform aliases for coreutils commands
+###################################################
+
+source $ZSH_SETUP_ROOT/global_aliases.zsh
 
 platform=`uname`
 if [[ $platform == 'Darwin' ]]; then
@@ -9,11 +45,13 @@ if [[ $platform == 'Darwin' ]]; then
     alias dircolors=gdircolors
 fi
 
-# setup main environment variables
 
-export ZSH_SETUP_ROOT=<<<ZSH_SETUP_ROOT>>>
-
+###################################################
+# Setup basic shell features
+###################################################
+#
 setopt histignorealldups sharehistory
+setopt interactivecomments
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
@@ -24,28 +62,6 @@ zle -N edit-command-line
 bindkey -r '^Xe'
 bindkey '^Xe' edit-command-line
 
-# setup main Environment variables
-
-export M2_REPO="$HOME/.m2/repository"
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS="-R"
-
-# # Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
-HISTFILE=~/.zsh_history
-
-export EDITOR=vim 
-
-# set the TERM env variable
-export TERM=xterm-color
-if [ -n $TMUX ]; then
-    export TERM=screen-256color
-fi
-
-export PATH=$HOME/apps/bin:$PATH
-export PATH=$HOME/apps/nodejs/bin:$PATH
-export PATH=/usr/local/bin:$PATH
 
 # Use modern completion system
 autoload -Uz compinit
@@ -71,12 +87,16 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 
 
+###################################################
 # setup tmux
+###################################################
 if [ -x $HOME/apps/tmux/bin/tmux ]; then
     alias tmux=$HOME/apps/tmux/bin/tmux
 fi
 
+###################################################
 # setup function autoloading 
+###################################################
 
 fpath=($ZSH_SETUP_ROOT/funcs $fpath)
 
@@ -94,14 +114,6 @@ autoload -U prompt_julian_setup
 promptinit
 prompt julian
 
-# setup main aliases
-
-alias ems='cd $ZSH_SETUP_ROOT'
-alias emv='cd $HOME/.myvim'
-
-alias g='git'
-alias ll="ls --color=auto -Flash"
-alias nicedate="date +'%Y-%m-%d'"
 
 ################################################################################
 # Python Virtualenv system
@@ -110,7 +122,6 @@ alias nicedate="date +'%Y-%m-%d'"
 autoload -U mkvirtualenv
 autoload -U workon
 
-export VIRTUAL_ENVS_ROOT=$HOME/.virtualenvs
 
 ################################################################################
 # General utility functions
@@ -119,11 +130,6 @@ export VIRTUAL_ENVS_ROOT=$HOME/.virtualenvs
 autoload -U chpwd
 chpwd_functions=('setup_nodejs')
 
-################################################################################
-# shell functions
-################################################################################
-
-export SHELL_BIN_ROOT=$ZSH_SETUP_ROOT/bin
 
 
 
