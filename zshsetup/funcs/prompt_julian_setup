@@ -20,9 +20,23 @@ function prompt_julian_setup() {
         inside_git=`git rev-parse --is-inside-work-tree 2>&1 > /dev/null`
         if [ $? = 0 ]; then
             git_info="(git)"
+            git_info="$(prompt_setcolor ${git_info} 046)"
 
+            # get branch 
             current_branch=`git status -s -b | awk '{print $2;}' | head -n1`
-            git_info="$git_info $current_branch"
+            current_branch="$(prompt_setcolor $current_branch 245)"
+
+            # get branch status
+            branch_status="⚡ | ✔"
+            branch_output=`git status -s -b | tail -n +2 | wc -l`
+
+            if (( $branch_output > 0 )); then
+                branch_status="$(prompt_setcolor '⚡' 160)"
+            else
+                branch_status="$(prompt_setcolor '✔ ' 046)"
+            fi
+
+            git_info="$git_info $branch_status $current_branch "
         else
             git_info=""
         fi
@@ -41,9 +55,25 @@ function prompt_julian_setup() {
         echo $python_virtual_env_info
     }
 
+    VIM_PROMPT="vi: INS"
+    function zle-line-init zle-keymap-select {
+        local vim_norm_prompt="vi: NOR"
+        local vim_ins_prompt="vi: INS"
+
+        VIM_PROMPT="${${KEYMAP/vicmd/$vim_norm_prompt}/(main|viins)/$vim_ins_prompt}"
+        zle reset-prompt
+    }
+
+    zle -N zle-line-init
+    zle -N zle-keymap-select
+
     SEG1_PROMPT='$(prompt_setcolor "┏" 226)'
     SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "[" 046)'
-    SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "%*" 213)'
+
+    #SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "%*" 213)' # date
+    
+    SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "$VIM_PROMPT" 213)' # vim prompt
+    #
     SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "]" 046)'
 
     SEG1_PROMPT="$SEG1_PROMPT "'$(prompt_setcolor "%n" 046)'
@@ -61,6 +91,11 @@ function prompt_julian_setup() {
     SEG2_PROMPT="$SEG2_PROMPT> "
 
     PROMPT=$SEG2_PROMPT
+
+    ###########################################
+    # setup the right prompt
+    ###########################################
+    RPROMPT="$KEYMAP"
     
 }
 
