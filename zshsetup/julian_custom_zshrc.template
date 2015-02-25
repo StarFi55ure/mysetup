@@ -63,6 +63,10 @@ zle -N edit-command-line
 bindkey -r '^Xe'
 bindkey '^Xe' edit-command-line
 
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
 
 # Use modern completion system
 autoload -Uz compinit
