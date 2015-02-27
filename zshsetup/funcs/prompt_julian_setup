@@ -31,7 +31,7 @@ function prompt_julian_setup() {
             branch_output=`git status -s -b | tail -n +2 | wc -l`
 
             if (( $branch_output > 0 )); then
-                branch_status="$(prompt_setcolor '✘' 160)"
+                branch_status="$(prompt_setcolor '✘ ' 160)"
             else
                 branch_status="$(prompt_setcolor '✔ ' 046)"
             fi
