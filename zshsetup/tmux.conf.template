@@ -9,4 +9,6 @@ bind-key a send-prefix
 set-window-option -g automatic-rename off
 
 run-shell "powerline-daemon -q"
-source "/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf"
+
+if-shell "uname | grep -q Darwin" ""
+if-shell "uname | grep -q Linux" "source '/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf'"
