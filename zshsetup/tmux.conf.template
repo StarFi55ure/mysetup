@@ -2,7 +2,11 @@ set-option -g prefix C-a
 
 unbind % # Remove default binding
 bind | split-window -h
+
 bind - split-window -v
 
 bind-key a send-prefix
 set-window-option -g automatic-rename off
+
+run-shell "powerline-daemon -q"
+source "/usr/local/lib/python2.7/dist-packages/powerline/bindings/tmux/powerline.conf"
