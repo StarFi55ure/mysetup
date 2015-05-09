@@ -8,6 +8,3 @@ bind - split-window -v
 bind-key a send-prefix
 set-window-option -g automatic-rename off
 
-run-shell 'powerline-daemon -q'
-
-run-shell 'powerline-config tmux setup'

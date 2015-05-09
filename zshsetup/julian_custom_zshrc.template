@@ -16,9 +16,6 @@ export PATH=$HOME/apps/bin:$PATH
 export PATH=$HOME/apps/nodejs/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 
-export LC_ALL=en_us.UTF-8
-export LANG=en_us.UTF-8
-
 export NVM_DIR=$HOME/.nvm
 
 #export POWERLINE_CONFIG_COMMAND=$HOME/.myvim/bundle/powerline/scripts/powerline-config
@@ -144,7 +141,7 @@ autoload -U chpwd
 chpwd_functions=('setup_nodejs')
 
 ################################################################################
-# Mac stuff
+# NVM stuff
 ################################################################################
 
 if [[ $platform == 'Darwin' ]]; then
@@ -152,6 +149,9 @@ if [[ $platform == 'Darwin' ]]; then
     cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
 
     source $(brew --prefix nvm)/nvm.sh
+elif [[ $platform == 'Linux' ]]; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
 #################################################################################
