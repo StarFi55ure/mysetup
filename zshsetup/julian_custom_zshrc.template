@@ -19,6 +19,8 @@ export PATH=/usr/local/bin:$PATH
 export LC_ALL=en_us.UTF-8
 export LANG=en_us.UTF-8
 
+export NVM_DIR=$HOME/.nvm
+
 #export POWERLINE_CONFIG_COMMAND=$HOME/.myvim/bundle/powerline/scripts/powerline-config
 
 # set the TERM env variable
@@ -38,13 +40,14 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
+platform=`uname`
+
 ###################################################
 #setup platform aliases for coreutils commands
 ###################################################
 
 source $ZSH_SETUP_ROOT/global_aliases.zsh
 
-platform=`uname`
 if [[ $platform == 'Darwin' ]]; then
     alias ls=gls
     alias readlink=greadlink
@@ -140,6 +143,20 @@ autoload -U workon
 autoload -U chpwd
 chpwd_functions=('setup_nodejs')
 
+################################################################################
+# Mac stuff
+################################################################################
 
+if [[ $platform == 'Darwin' ]]; then
+    mkdir -p ~/.nvm
+    cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
 
+    source $(brew --prefix nvm)/nvm.sh
+fi
+
+#################################################################################
+# Setup Java stuff
+#################################################################################
+
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
