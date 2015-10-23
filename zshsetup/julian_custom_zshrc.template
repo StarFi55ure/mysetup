@@ -45,12 +45,6 @@ platform=`uname`
 
 source $ZSH_SETUP_ROOT/global_aliases.zsh
 
-if [[ $platform == 'Darwin' ]]; then
-    alias ls=gls
-    alias readlink=greadlink
-    alias dircolors=gdircolors
-fi
-
 
 ###################################################
 # Setup basic shell features
@@ -60,7 +54,7 @@ setopt histignorealldups sharehistory
 setopt interactivecomments
 
 # Use emacs keybindings even if our EDITOR is set to vi
-bindkey -v
+bindkey -e
 
 # make sure I can edit my command lines
 autoload -Uz edit-command-line
