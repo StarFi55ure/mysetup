@@ -26,8 +26,6 @@ if [ -n $TMUX ]; then
     export TERM=screen-256color
 fi
 
-export VIRTUAL_ENVS_ROOT=$HOME/.virtualenvs
-
 # set some shell paths
 export SHELL_BIN_ROOT=$ZSH_SETUP_ROOT/bin
 
@@ -152,5 +150,16 @@ fi
 # Setup Java stuff
 #################################################################################
 
+export PATH="$HOME/.jenv/bin:$PATH"
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+#################################################################################
+# Setup pyenv stuff
+#################################################################################
+
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 

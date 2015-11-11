@@ -7,23 +7,28 @@ function chpwd() {
     if [ -d $PWD/node_modules ]; then
         export PRE_NODEJS_PATH=$PATH
         export PATH=$PWD/node_modules/.bin:$PATH
+        export NODEJS_LOCAL_ACTIVATED=1
     else
         if [ ! -z "$PRE_NODEJS_PATH" ]; then
             export PATH=$PRE_NODEJS_PATH
             unset PRE_NODEJS_PATH
+            unset NODEJS_LOCAL_ACTIVATED
         fi
     fi
 
 
     # activate private python virtual environments
-    if [ -d $PWD/.pyenv ]; then
-        export VIRTUAL_ENV_DISABLE_PROMPT=1
-        source $PWD/.pyenv/bin/activate
-        hash -r
-    else 
-        declare -f deactivate > /dev/null
-        if [[ $? != 1 ]]; then 
-            deactivate
-        fi
-    fi
+    #
+    # Using Pyenv for now
+    
+    #if [ -d $PWD/.localpyenv ]; then
+    #    export VIRTUAL_ENV_DISABLE_PROMPT=1
+    #    source $PWD/.localpyenv/bin/activate
+    #    hash -r
+    #else 
+    #    declare -f deactivate > /dev/null
+    #    if [[ $? != 1 ]]; then 
+    #        deactivate
+    #    fi
+    #fi
 }

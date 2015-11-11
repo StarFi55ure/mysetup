@@ -48,8 +48,11 @@ function prompt_julian_setup() {
 
         local python_virtual_env_info=""
 
-        if [ -n "${VIRTUAL_ENV}" ]; then;
-            python_virtual_env_info=" (PyEnv: `basename $VIRTUAL_ENV`)"
+        local pyenv_version=`pyenv version | awk '{print $1}'`
+        local pyenv_activated_virtualenv=`pyenv virtualenvs | grep '^\*' | awk '{print $2}'`
+
+        if [[ $pyenv_version == $pyenv_activated_virtualenv ]]; then;
+            python_virtual_env_info=" (PyEnv: $pyenv_version)"
         fi
 
         echo $python_virtual_env_info
