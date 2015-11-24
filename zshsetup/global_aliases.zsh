@@ -1,6 +1,3 @@
-alias vim="gvim"
-
-alias cvim="/usr/bin/vim"
 
 alias ems='cd $ZSH_SETUP_ROOT'
 alias emv='cd $HOME/.myvim'

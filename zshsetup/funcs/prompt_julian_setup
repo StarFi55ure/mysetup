@@ -48,10 +48,10 @@ function prompt_julian_setup() {
 
         local python_virtual_env_info=""
 
-        local pyenv_version=`pyenv version | awk '{print $1}'`
-        local pyenv_activated_virtualenv=`pyenv virtualenvs | grep '^\*' | awk '{print $2}'`
+        local pyenv_version=`pyenv version-name`
+        local pyenv_virtualenv_prefix=`pyenv virtualenv-prefix 2>/dev/null`
 
-        if [[ $pyenv_version == $pyenv_activated_virtualenv ]]; then;
+        if [[ $pyenv_virtualenv_prefix != "" ]]; then;
             python_virtual_env_info=" (PyEnv: $pyenv_version)"
         fi
 
