@@ -11,9 +11,9 @@ export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS="-R"
 
 export EDITOR=vim 
+export APPS_DIR=$HOME/apps
 
-export PATH=$HOME/apps/bin:$PATH
-export PATH=$HOME/apps/nodejs/bin:$PATH
+export PATH=$APPS_DIR/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 
 export NVM_DIR=$HOME/.nvm
@@ -38,7 +38,7 @@ HISTFILE=~/.zsh_history
 platform=`uname`
 
 ###################################################
-#setup platform aliases for coreutils commands
+#setup global aliases
 ###################################################
 
 source $ZSH_SETUP_ROOT/global_aliases.zsh
@@ -90,13 +90,6 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 
 ###################################################
-# setup tmux
-###################################################
-if [ -x $HOME/apps/tmux/bin/tmux ]; then
-    alias tmux=$HOME/apps/tmux/bin/tmux
-fi
-
-###################################################
 # setup function autoloading 
 ###################################################
 
@@ -118,19 +111,11 @@ prompt julian
 
 
 ################################################################################
-# Python Virtualenv system
-################################################################################
-
-autoload -U mkvirtualenv
-autoload -U workon
-
-
-################################################################################
 # General utility functions
 ################################################################################
 
 autoload -U chpwd
-chpwd_functions=('setup_nodejs')
+#chpwd_functions=('setup_nodejs')
 
 ################################################################################
 # NVM stuff
@@ -139,7 +124,6 @@ chpwd_functions=('setup_nodejs')
 if [[ $platform == 'Darwin' ]]; then
     mkdir -p ~/.nvm
     cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
-
     source $(brew --prefix nvm)/nvm.sh
 elif [[ $platform == 'Linux' ]]; then
     export NVM_DIR="$HOME/.nvm"
@@ -162,4 +146,11 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+
+#################################################################################
+# Setup custom scripts for apps bin directory
+#################################################################################
+
+
 

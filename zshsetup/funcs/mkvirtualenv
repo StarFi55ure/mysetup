@@ -1,6 +1,0 @@
-#!/bin/zsh
-
-function mkvirtualenv() {
-    $SHELL_BIN_ROOT/mkvirtualenv.py $@
-}
-
