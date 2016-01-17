@@ -58,15 +58,10 @@ function prompt_julian_setup() {
         echo $python_virtual_env_info
     }
 
-    zle -N zle-line-init
-    zle -N zle-keymap-select
-
     SEG1_PROMPT='$(prompt_setcolor "┏" 226)'
     SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "[" 046)'
 
     SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "%*" 213)' # date
-    
-    #SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "$VIM_PROMPT" 213)' # vim prompt
 
     SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "]" 046)'
 
