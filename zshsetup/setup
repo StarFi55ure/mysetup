@@ -55,7 +55,16 @@ fi
 echo "Linking gitconfig to home dir"
 ln -s $GIT_USER_CONFIG $HOME/.gitconfig
 
+##################################################################
+# i3wm Config
+##################################################################
 
+if [ ! -d $HOME/.i3 ]; then
+    mkdir $HOME/.i3
+fi
+if [ ! -f $HOME/.i3/config ]; then
+    ln -s $ZSH_SETUP_ROOT/i3config $HOME/.i3/config
+fi
 
 echo "Done running setup"
 exit 0
