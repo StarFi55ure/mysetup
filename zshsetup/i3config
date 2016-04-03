@@ -19,6 +19,9 @@ font pango:monospace 8
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# Setup monitor before everything else
+exec --no-startup-id xrandr --output HDMI-0 --primary --left-of DVI-I-0
+
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -161,6 +164,7 @@ bindsym $mod+r mode "resize"
 bar {
     status_command i3status
     position top
+    font pango:Liberation Sans 10
 }
 
 exec --no-startup-id gnome-settings-daemon
