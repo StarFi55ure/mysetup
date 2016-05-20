@@ -48,6 +48,7 @@ source $ZSH_SETUP_ROOT/global_aliases.zsh
 # Setup basic shell features
 ###################################################
 #
+setopt extended_glob
 setopt histignorealldups sharehistory
 setopt interactivecomments
 
@@ -148,6 +149,12 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+################################################################################
+## Setup Ruby environments
+################################################################################
+#
+eval "$(rbenv init -)"
 
 
 #################################################################################

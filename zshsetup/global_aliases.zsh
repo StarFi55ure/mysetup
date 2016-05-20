@@ -11,3 +11,5 @@ alias php="php5 -dzend_extension=xdebug.so"
 alias phpunit="php $(which phpunit)"
 alias composer="php5 composer.phar"
 
+alias sctl="supervisorctl"
+
