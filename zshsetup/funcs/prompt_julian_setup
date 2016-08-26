@@ -68,8 +68,10 @@ function prompt_julian_setup() {
     SEG1_PROMPT="$SEG1_PROMPT "'$(prompt_setcolor "%n" 046)'
     SEG1_PROMPT="$SEG1_PROMPT@"'$(prompt_setcolor "%M" 033)'
     SEG1_PROMPT="$SEG1_PROMPT: "'$(prompt_setcolor "$(git_prompt_info)" 046)'
-    
-    SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "$(python_virtual_env)" 142)'
+
+    if [[ $(hostname) != "hash.za.org" ]]; then
+        SEG1_PROMPT="$SEG1_PROMPT"'$(prompt_setcolor "$(python_virtual_env)" 142)'
+    fi
 
     SEG2_PROMPT="$SEG1_PROMPT
 "'$(prompt_setcolor "┃" 226)'

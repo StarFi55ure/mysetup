@@ -118,43 +118,47 @@ prompt julian
 autoload -U chpwd
 #chpwd_functions=('setup_nodejs')
 
-################################################################################
-# NVM stuff
-################################################################################
+if [[ $(hostname) != "hash.za.org" ]]; then
 
-if [[ $platform == 'Darwin' ]]; then
-    mkdir -p ~/.nvm
-    cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
-    source $(brew --prefix nvm)/nvm.sh
-elif [[ $platform == 'Linux' ]]; then
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    ################################################################################
+    # NVM stuff
+    ################################################################################
+
+    if [[ $platform == 'Darwin' ]]; then
+        mkdir -p ~/.nvm
+        cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
+        source $(brew --prefix nvm)/nvm.sh
+    elif [[ $platform == 'Linux' ]]; then
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    fi
+
+    #################################################################################
+    # Setup Java stuff
+    #################################################################################
+
+    export PATH="$HOME/.jenv/bin:$PATH"
+    if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+    export JAVA_HOME=$(jenv javahome)
+
+    #################################################################################
+    # Setup pyenv stuff
+    #################################################################################
+
+    export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+    export PATH="$HOME/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+
+    ################################################################################
+    ## Setup Ruby environments
+    ################################################################################
+    #
+    eval "$(rbenv init -)"
+
 fi
-
-#################################################################################
-# Setup Java stuff
-#################################################################################
-
-export PATH="$HOME/.jenv/bin:$PATH"
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-
-export JAVA_HOME=$(jenv javahome)
-
-#################################################################################
-# Setup pyenv stuff
-#################################################################################
-
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-################################################################################
-## Setup Ruby environments
-################################################################################
-#
-eval "$(rbenv init -)"
 
 
 #################################################################################
