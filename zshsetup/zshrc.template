@@ -141,6 +141,7 @@ if [[ $(hostname) != "hash.za.org" ]]; then
     #
     #export JAVA_HOME=$(jenv javahome)
 
+fi
 
 #################################################################################
 # Setup custom scripts for apps bin directory
