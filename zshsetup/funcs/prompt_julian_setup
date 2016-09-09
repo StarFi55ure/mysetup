@@ -46,14 +46,14 @@ function prompt_julian_setup() {
 
     function python_virtual_env() {
 
-        local python_virtual_env_info=""
+        #local python_virtual_env_info=""
 
-        local pyenv_version=`pyenv version-name`
-        local pyenv_virtualenv_prefix=`pyenv virtualenv-prefix 2>/dev/null`
+        #local pyenv_version=`pyenv version-name`
+        #local pyenv_virtualenv_prefix=`pyenv virtualenv-prefix 2>/dev/null`
 
-        if [[ $pyenv_virtualenv_prefix != "" ]]; then;
-            python_virtual_env_info=" (PyEnv: $pyenv_version)"
-        fi
+        #if [[ $pyenv_virtualenv_prefix != "" ]]; then;
+        #    python_virtual_env_info=" (PyEnv: $pyenv_version)"
+        #fi
 
         echo $python_virtual_env_info
     }

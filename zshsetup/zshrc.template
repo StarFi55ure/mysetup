@@ -131,30 +131,14 @@ elif [[ $platform == 'Linux' ]]; then
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
-#################################################################################
-# Setup Java stuff
-#################################################################################
-
-export PATH="$HOME/.jenv/bin:$PATH"
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-
-export JAVA_HOME=$(jenv javahome)
-
-#################################################################################
-# Setup pyenv stuff
-#################################################################################
-
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-################################################################################
-## Setup Ruby environments
-################################################################################
+##################################################################################
+## Setup Java stuff
+##################################################################################
 #
-eval "$(rbenv init -)"
+#export PATH="$HOME/.jenv/bin:$PATH"
+#if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+#
+#export JAVA_HOME=$(jenv javahome)
 
 
 #################################################################################
