@@ -13,3 +13,6 @@ alias composer="php5 composer.phar"
 
 alias sctl="supervisorctl"
 
+alias va="vagrant"
+
+

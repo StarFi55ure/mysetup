@@ -202,6 +202,7 @@ exec --no-startup-id dropbox start
 exec --no-startup-id xset r rate 200 50
 exec --no-startup-id volti
 exec --no-startup-id blueman-applet
+exec --no-startup-id /home/julian/apps/jetbrains-toolbox/jetbrains-toolbox
 
 #exec --no-startup-id compton -b -c -r 4 -o 0.4
 
@@ -223,4 +224,14 @@ bindsym XF86MonBrightnessUp exec xbacklight -steps 1 -time 0 -inc 10
 # show battery stats
 bindsym XF86Battery exec gnome-power-statistics
 
+##################################################
+#   Development
+#   -----------
+#
+#   some convenience settings while developing
+#
+##################################################
+
+for_window [title="TutorialApplication Render Window"] floating enable
+for_window [title="Arcus v"] floating enable
 
