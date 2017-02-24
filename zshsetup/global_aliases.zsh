@@ -12,6 +12,7 @@ alias phpunit="php $(which phpunit)"
 alias composer="php5 composer.phar"
 
 alias sctl="supervisorctl"
-alias set_title="wmctrl -r :ACTIVE: -N "
+
+alias va="vagrant"
 
 

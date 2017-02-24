@@ -12,11 +12,16 @@ export LESS="-R"
 
 export EDITOR=vim 
 export APPS_DIR=$HOME/apps
+export GEM_USER_DIR=$HOME/.gem/ruby/2.3.0
 
-export PATH=$APPS_DIR/bin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=$GEM_USER_DIR/bin:$PATH
+export PATH=$ZSH_SETUP_ROOT/bin:$PATH
+export PATH=$APPS_DIR/bin:$PATH
 
 export NVM_DIR=$HOME/.nvm
+
+export ZLE_RPROMPT_INDENT=0
 
 #export POWERLINE_CONFIG_COMMAND=$HOME/.myvim/bundle/powerline/scripts/powerline-config
 
