@@ -5,6 +5,7 @@ alias emv='cd $HOME/.myvim'
 alias g='git'
 alias ll="ls --color=auto -Flsh"
 
+
 alias nicedate="date +'%Y-%m-%d'"
 
 alias php="php5 -dzend_extension=xdebug.so"
@@ -14,5 +15,7 @@ alias composer="php5 composer.phar"
 alias sctl="supervisorctl"
 
 alias va="vagrant"
+alias v="vim"
+alias gv="gvim"
 
 
