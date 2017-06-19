@@ -18,4 +18,5 @@ alias va="vagrant"
 alias v="vim"
 alias gv="gvim"
 
+alias t-a="tmux attach"
 

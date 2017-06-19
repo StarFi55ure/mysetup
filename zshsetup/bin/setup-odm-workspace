@@ -1,0 +1,105 @@
+#!/usr/bin/python3.5
+
+import sh
+
+def get_sessions():
+    try:
+        sessions = sh.tmux('list-sessions')
+        sessions = [s.split(' ')[0][:-1] for s in sessions]
+        return sessions
+    except sh.ErrorReturnCode_1:
+        return []
+
+
+# setup CMSv2
+
+
+if 'CMSv2' in get_sessions():
+    print("CMSv2 exists")
+else:
+    print("Creating CMSv2 session")
+    sh.tmux('new-session', 
+            '-d',
+            '-c', '/home/julian/projects/odm/cmsv2',
+            '-n', 'main',
+            '-s', 'CMSv2')
+
+    sh.tmux('send', 'll\n')
+
+    sh.tmux('new-window',
+            '-n', 'status')
+    sh.tmux('send', 'cd $HOME/projects/odm/cmsv2\n')
+    sh.tmux('send', 'git status\n')
+
+# setup GIS
+
+if 'GIS' in get_sessions():
+    print('GIS exists')
+else:
+    print('Creating GIS session')
+    sh.tmux('new-session',
+            '-d',
+            '-c', '/home/julian/projects/tileoven',
+            '-n', 'tileoven',
+            '-s', 'GIS')
+    sh.tmux('send', 'node index.js\n')
+
+    sh.tmux('new-window',
+            '-n', 'servers')
+    sh.tmux('send', 'cd $HOME/projects/gisplayarea/tiles/server\n')
+    sh.tmux('send', 'node index.js\n')
+
+    sh.tmux('split-window', '-v')
+    sh.tmux('send', 'cd $HOME/projects/gisplayarea/webclient\n')
+    sh.tmux('send', 'gulp default watch\n')
+
+    sh.tmux('new-window',
+            '-n', 'webclient')
+    sh.tmux('send', 'cd $HOME/projects/gisplayarea/webclient\n')
+    sh.tmux('send', '. pyenv/bin/activate\n')
+    sh.tmux('send', 'LD_LIBRARY_PATH=pyenv/lib pyenv/bin/runserver\n')
+
+    sh.tmux('new-window',
+            '-n', 'main')
+
+# setup Atlas
+
+if 'Atlas' in get_sessions():
+    print('Atlas exists')
+else:
+    print('Creating Atlas session')
+
+    sh.tmux('new-session',
+            '-d',
+            '-c', '/home/julian/projects/odm/atlas',
+            '-n', 'main',
+            '-s', 'Atlas')
+
+    sh.tmux('send', 'git status\n')
+
+    sh.tmux('new-window',
+            '-n', 'tail')
+    sh.tmux('send', 'cd /var/log/nginx\n')
+    sh.tmux('send', 'tail -F -n 100 /var/log/nginx/access.log\n')
+
+# setup brightsign
+
+if 'BrightSign' in get_sessions():
+    print('BrightSign exists')
+else:
+    print('Creating BrightSign session')
+    sh.tmux('new-session',
+            '-d',
+            '-c', '/home/julian/projects/odm/brightsign-changeconfig',
+            '-n', 'runtools',
+            '-s', 'BrightSign')
+
+    sh.tmux('send', '. pyenv/bin/activate\n')
+
+    sh.tmux('new-window',
+            '-n', 'edit')
+    sh.tmux('send', 'git status\n')
+
+
+print('done')
+print(get_sessions())
