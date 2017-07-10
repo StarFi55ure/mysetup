@@ -18,7 +18,7 @@ if 'CMSv2' in get_sessions():
     print("CMSv2 exists")
 else:
     print("Creating CMSv2 session")
-    sh.tmux('new-session', 
+    sh.tmux('new-session',
             '-d',
             '-c', '/home/julian/projects/odm/cmsv2',
             '-n', 'main',
@@ -57,7 +57,7 @@ else:
             '-n', 'webclient')
     sh.tmux('send', 'cd $HOME/projects/gisplayarea/webclient\n')
     sh.tmux('send', '. pyenv/bin/activate\n')
-    sh.tmux('send', 'LD_LIBRARY_PATH=pyenv/lib pyenv/bin/runserver\n')
+    sh.tmux('send', 'LD_LIBRARY_PATH=pyenv/lib ./manage.py runserver 7000\n')
 
     sh.tmux('new-window',
             '-n', 'main')
@@ -93,13 +93,38 @@ else:
             '-c', '/home/julian/projects/odm/brightsign-changeconfig',
             '-n', 'runtools',
             '-s', 'BrightSign')
-
     sh.tmux('send', '. pyenv/bin/activate\n')
 
     sh.tmux('new-window',
             '-n', 'edit')
     sh.tmux('send', 'git status\n')
 
+# noise designer
+
+if 'NoiseDes' in get_sessions():
+    print('NoiseDes exists')
+else:
+    sh.tmux('new-session',
+            '-d',
+            '-c', '/home/julian/projects/noisedesigner',
+            '-n', 'servers',
+            '-s', 'NoiseDes')
+    sh.tmux('send', '. pyenv/bin/activate\n')
+    sh.tmux('send', './manage.py runserver 9000\n')
+
+    sh.tmux('split-window', '-h')
+    sh.tmux('send', 'cd /home/julian/projects/noisedesigner\n')
+    sh.tmux('send', 'gulp default watch\n')
+
+    sh.tmux('new-window',
+            '-n', 'libnoise')
+    sh.tmux('send', 'cd /home/julian/projects/libnoise\n')
+    sh.tmux('send', 'git status\n')
+
+    sh.tmux('new-window',
+            '-n', 'noisedesigner')
+    sh.tmux('send', 'cd /home/julian/projects/noisedesigner\n')
+    sh.tmux('send', 'git status\n')
 
 print('done')
 print(get_sessions())
