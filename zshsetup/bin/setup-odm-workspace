@@ -50,14 +50,16 @@ else:
     sh.tmux('send', 'node index.js\n')
 
     sh.tmux('split-window', '-v')
-    sh.tmux('send', 'cd $HOME/projects/gisplayarea/webclient\n')
+    sh.tmux('send', 'cd $HOME/projects/gisplayarea/api\n')
     sh.tmux('send', 'gulp default watch\n')
 
     sh.tmux('new-window',
             '-n', 'webclient')
-    sh.tmux('send', 'cd $HOME/projects/gisplayarea/webclient\n')
-    sh.tmux('send', '. pyenv/bin/activate\n')
-    sh.tmux('send', 'LD_LIBRARY_PATH=pyenv/lib ./manage.py runserver 7000\n')
+    sh.tmux('send', 'cd $HOME/projects/gisplayarea/api\n')
+    sh.tmux('send', './gradlew -t shadowjar\n')
+    sh.tmux('split-window', '-v')
+    sh.tmux('send', 'cd $HOME/projects/gisplayarea/api\n')
+    sh.tmux('send', 'java -jar build/libs/api-all.jar\n')
 
     sh.tmux('new-window',
             '-n', 'main')
@@ -81,6 +83,16 @@ else:
             '-n', 'tail')
     sh.tmux('send', 'cd /var/log/nginx\n')
     sh.tmux('send', 'tail -F -n 100 /var/log/nginx/access.log\n')
+
+    sh.tmux('new-window',
+            '-n', 'servers')
+    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi-julianfork\n')
+    sh.tmux('send', '. pyenv/bin/activate\n')
+    sh.tmux('send', './julian_uwsgi\n')
+
+    sh.tmux('split-window', '-h')
+    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi-julianfork\n')
+    sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
 
 # setup brightsign
 
@@ -110,7 +122,7 @@ else:
             '-n', 'servers',
             '-s', 'NoiseDes')
     sh.tmux('send', '. pyenv/bin/activate\n')
-    sh.tmux('send', './manage.py runserver 9000\n')
+    sh.tmux('send', './manage.py runserver 9876\n')
 
     sh.tmux('split-window', '-h')
     sh.tmux('send', 'cd /home/julian/projects/noisedesigner\n')
