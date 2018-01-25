@@ -8,9 +8,8 @@ alias ll="ls --color=auto -Flsh"
 
 alias nicedate="date +'%Y-%m-%d'"
 
-alias php="php5 -dzend_extension=xdebug.so"
 alias phpunit="php $(which phpunit)"
-alias composer="php5 composer.phar"
+alias composer="php composer.phar"
 
 alias sctl="supervisorctl"
 
@@ -18,5 +17,5 @@ alias va="vagrant"
 alias v="vim"
 alias gv="gvim"
 
-alias t-a="tmux attach"
+alias ta="tmux attach"
 
