@@ -17,6 +17,7 @@
     co = checkout
     b = branch
     p = pull
+    d = diff
 
 [push]
 	default = matching

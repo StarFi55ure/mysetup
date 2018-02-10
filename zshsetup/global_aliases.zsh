@@ -19,3 +19,6 @@ alias gv="gvim"
 
 alias ta="tmux attach"
 
+alias ve3="virtualenv -p python3 pyenv"
+alias ve2="virtualenv -p python pyenv"
+

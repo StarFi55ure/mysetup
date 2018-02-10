@@ -20,8 +20,6 @@ export PATH=$ZSH_SETUP_ROOT/bin:$PATH
 export PATH=$APPS_DIR/bin:$PATH
 export PATH=/usr/local/share/webOS_Signage_SDK/CLI/bin:$PATH
 
-export NVM_DIR=$HOME/.nvm
-
 export ZLE_RPROMPT_INDENT=0
 
 #export POWERLINE_CONFIG_COMMAND=$HOME/.myvim/bundle/powerline/scripts/powerline-config
@@ -125,27 +123,6 @@ autoload -U chpwd
 #chpwd_functions=('setup_nodejs')
 
 if [[ $(hostname) != "hash.za.org" ]]; then
-
-    ################################################################################
-    # NVM stuff
-    ################################################################################
-    if [[ $platform == 'Darwin' ]]; then
-        mkdir -p ~/.nvm
-        cp $(brew --prefix nvm)/nvm-exec ~/.nvm/
-        source $(brew --prefix nvm)/nvm.sh
-    elif [[ $platform == 'Linux' ]]; then
-        export NVM_DIR="$HOME/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    fi
-
-    ##################################################################################
-    ## Setup Java stuff
-    ##################################################################################
-    #
-    #export PATH="$HOME/.jenv/bin:$PATH"
-    #if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-    #
-    #export JAVA_HOME=$(jenv javahome)
 
 fi
 
