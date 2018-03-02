@@ -86,12 +86,12 @@ else:
 
     sh.tmux('new-window',
             '-n', 'servers')
-    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi-julianfork\n')
+    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
     sh.tmux('send', '. pyenv/bin/activate\n')
     sh.tmux('send', './julian_uwsgi\n')
 
     sh.tmux('split-window', '-h')
-    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi-julianfork\n')
+    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
     sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
 
 # setup brightsign
