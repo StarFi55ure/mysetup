@@ -33,32 +33,32 @@ else:
 
 # setup GIS
 
-if 'GIS' in get_sessions():
-    print('GIS exists')
+if 'Hyperion' in get_sessions():
+    print('Hyperion exists')
 else:
-    print('Creating GIS session')
+    print('Creating Hyperion session')
     sh.tmux('new-session',
             '-d',
             '-c', '/home/julian/projects/tileoven',
             '-n', 'tileoven',
-            '-s', 'GIS')
+            '-s', 'Hyperion')
     sh.tmux('send', 'node index.js\n')
 
     sh.tmux('new-window',
             '-n', 'servers')
-    sh.tmux('send', 'cd $HOME/projects/gisplayarea/tiles/server\n')
+    sh.tmux('send', 'cd $HOME/projects/hyperion/tiles/server\n')
     sh.tmux('send', 'node index.js\n')
 
     sh.tmux('split-window', '-v')
-    sh.tmux('send', 'cd $HOME/projects/gisplayarea/api\n')
+    sh.tmux('send', 'cd $HOME/projects/hyperion/api\n')
     sh.tmux('send', 'gulp default watch\n')
 
     sh.tmux('new-window',
             '-n', 'webclient')
-    sh.tmux('send', 'cd $HOME/projects/gisplayarea/api\n')
+    sh.tmux('send', 'cd $HOME/projects/hyperion/api\n')
     sh.tmux('send', './gradlew -t shadowjar\n')
     sh.tmux('split-window', '-v')
-    sh.tmux('send', 'cd $HOME/projects/gisplayarea/api\n')
+    sh.tmux('send', 'cd $HOME/projects/hyperion/api\n')
     sh.tmux('send', 'java -jar build/libs/api-all.jar\n')
 
     sh.tmux('new-window',
