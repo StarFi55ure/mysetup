@@ -10,9 +10,20 @@ def get_sessions():
     except sh.ErrorReturnCode_1:
         return []
 
+# setup Main
+
+if 'Main' in get_sessions():
+    print('Main exisis')
+else:
+    print('Creating Main Session')
+    sh.tmux('new-session',
+            '-d',
+            '-c', '/home/julian/projects',
+            '-n', 'main',
+            '-s', 'Main')
+    sh.tmux('send', "ll\n")
 
 # setup CMSv2
-
 
 if 'CMSv2' in get_sessions():
     print("CMSv2 exists")
@@ -64,6 +75,34 @@ else:
     sh.tmux('new-window',
             '-n', 'main')
 
+# setup Arcus
+
+if 'Arcus' in get_sessions():
+    print('Arcus exists')
+else:
+    print('Creating Arcus session')
+    sh.tmux('new-session',
+            '-d',
+            '-c', '/home/julian/projects/odm/arcuscms',
+            '-n', 'main',
+            '-s', 'Arcus')
+
+    sh.tmux('new-window',
+            '-n', 'grunt')
+    sh.tmux('send', "cd /home/julian/projects/odm/arcuscms\n")
+    sh.tmux('send', "grunt default watch\n")
+
+    sh.tmux('new-window',
+            '-n', 'servers')
+    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
+    sh.tmux('send', '. pyenv/bin/activate\n')
+    sh.tmux('send', './julian_uwsgi\n')
+
+    sh.tmux('split-window', '-h')
+    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
+    sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
+
+
 # setup Atlas
 
 if 'Atlas' in get_sessions():
@@ -84,15 +123,10 @@ else:
     sh.tmux('send', 'cd /var/log/nginx\n')
     sh.tmux('send', 'tail -F -n 100 /var/log/nginx/access.log\n')
 
-    sh.tmux('new-window',
-            '-n', 'servers')
-    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
-    sh.tmux('send', '. pyenv/bin/activate\n')
-    sh.tmux('send', './julian_uwsgi\n')
-
     sh.tmux('split-window', '-h')
     sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
     sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
+
 
 # setup brightsign
 

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+pactl load-module module-dbus-protocol
+pactl load-module module-equalizer-sink
+
