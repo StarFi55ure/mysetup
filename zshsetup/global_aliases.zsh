@@ -8,12 +8,8 @@ alias ll="ls --color=auto -Flsh"
 
 alias nicedate="date +'%Y-%m-%d'"
 
-alias phpunit="php $(which phpunit)"
-alias composer="php composer.phar"
-
 alias sctl="supervisorctl"
 
-alias va="vagrant"
 alias v="vim"
 alias gv="gvim"
 
