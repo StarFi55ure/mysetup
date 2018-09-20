@@ -3,6 +3,9 @@ alias ems='cd $ZSH_SETUP_ROOT'
 alias emv='cd $HOME/.myvim'
 
 alias g='git'
+alias gp='git push'
+alias gpt='git push --tags'
+
 alias ll="ls --color=auto -Flsh"
 
 
@@ -17,4 +20,5 @@ alias ta="tmux attach"
 
 alias ve3="virtualenv -p python3 pyenv"
 alias ve2="virtualenv -p python pyenv"
+alias pact="source pyenv/bin/activate"
 
