@@ -61,19 +61,12 @@ else:
     sh.tmux('send', 'node index.js\n')
 
     sh.tmux('split-window', '-v')
-    sh.tmux('send', 'cd $HOME/projects/hyperion/api\n')
-    sh.tmux('send', 'gulp default watch\n')
-
-    sh.tmux('new-window',
-            '-n', 'webclient')
-    sh.tmux('send', 'cd $HOME/projects/hyperion/api\n')
-    sh.tmux('send', './gradlew -t shadowjar\n')
-    sh.tmux('split-window', '-v')
-    sh.tmux('send', 'cd $HOME/projects/hyperion/api\n')
-    sh.tmux('send', 'java -jar build/libs/api-all.jar\n')
+    sh.tmux('send', 'cd $HOME/projects/hyperion/core/web\n')
+    sh.tmux('send', 'gulp default\n')
 
     sh.tmux('new-window',
             '-n', 'main')
+    sh.tmux('send', 'cd $HOME/projects/hyperion/core\n')
 
 # setup Arcus
 
@@ -101,6 +94,15 @@ else:
     sh.tmux('split-window', '-h')
     sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
     sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
+
+    sh.tmux('new-window',
+            '-n', 'arcusplayer')
+    sh.tmux('send', 'cd /home/julian/projects/odm/arcusplayer\n')
+    sh.tmux('send', '. pyenv/bin/activate\n')
+    sh.tmux('split-window', '-h')
+    sh.tmux('send', 'cd /home/julian/projects/odm/arcusplayer\n')
+    sh.tmux('split-window', '-v')
+    sh.tmux('send', 'cd /var/cache/pbuilder/result\n')
 
 
 # setup Atlas
@@ -140,6 +142,9 @@ else:
             '-n', 'runtools',
             '-s', 'BrightSign')
     sh.tmux('send', '. pyenv/bin/activate\n')
+    sh.tmux('split-window', '-h')
+    sh.tmux('send', 'cd /home/julian/projects/odm/brightsign-changeconfig\n')
+    sh.tmux('send', 'cd processed/splinter\n')
 
     sh.tmux('new-window',
             '-n', 'edit')
@@ -153,24 +158,8 @@ else:
     sh.tmux('new-session',
             '-d',
             '-c', '/home/julian/projects/noisedesigner',
-            '-n', 'servers',
+            '-n', 'main',
             '-s', 'NoiseDes')
-    sh.tmux('send', '. pyenv/bin/activate\n')
-    sh.tmux('send', './manage.py runserver 9876\n')
-
-    sh.tmux('split-window', '-h')
-    sh.tmux('send', 'cd /home/julian/projects/noisedesigner\n')
-    sh.tmux('send', 'gulp default watch\n')
-
-    sh.tmux('new-window',
-            '-n', 'libnoise')
-    sh.tmux('send', 'cd /home/julian/projects/libnoise\n')
-    sh.tmux('send', 'git status\n')
-
-    sh.tmux('new-window',
-            '-n', 'noisedesigner')
-    sh.tmux('send', 'cd /home/julian/projects/noisedesigner\n')
-    sh.tmux('send', 'git status\n')
 
 print('done')
 print(get_sessions())
