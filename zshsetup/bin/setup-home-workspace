@@ -11,26 +11,6 @@ def get_sessions():
         return []
 
 
-# setup CMSv2
-
-
-if 'CMSv2' in get_sessions():
-    print("CMSv2 exists")
-else:
-    print("Creating CMSv2 session")
-    sh.tmux('new-session',
-            '-d',
-            '-c', '/home/julian/projects/odm/cmsv2',
-            '-n', 'main',
-            '-s', 'CMSv2')
-
-    sh.tmux('send', 'll\n')
-
-    sh.tmux('new-window',
-            '-n', 'status')
-    sh.tmux('send', 'cd $HOME/projects/odm/cmsv2\n')
-    sh.tmux('send', 'git status\n')
-
 # setup GIS
 
 if 'Hyperion' in get_sessions():
@@ -39,23 +19,23 @@ else:
     print('Creating Hyperion session')
     sh.tmux('new-session',
             '-d',
-            '-c', '/home/julian/projects/tileoven',
+            '-c', '/mnt/Store/projects/tileoven',
             '-n', 'tileoven',
             '-s', 'Hyperion')
     sh.tmux('send', 'node index.js\n')
 
     sh.tmux('new-window',
             '-n', 'servers')
-    sh.tmux('send', 'cd $HOME/projects/hyperion/tiles/server\n')
+    sh.tmux('send', 'cd /mnt/Store/projects/hyperion/tiles/server\n')
     sh.tmux('send', 'node index.js\n')
 
     sh.tmux('split-window', '-v')
-    sh.tmux('send', 'cd $HOME/projects/hyperion/api\n')
+    sh.tmux('send', 'cd /mnt/Store/projects/hyperion/web\n')
     sh.tmux('send', 'gulp default watch\n')
 
     sh.tmux('new-window',
             '-n', 'main')
-    sh.tmux('send', 'cd $HOME/projects/hyperion\n')
+    sh.tmux('send', 'cd /mnt/Store/projects/hyperion\n')
     sh.tmux('send', 'git status\n')
 
 
@@ -67,24 +47,15 @@ else:
     print('Creating NoiseDesigner session')
     sh.tmux('new-session',
             '-d',
-            '-c', '/home/julian/projects/noisedesigner',
+            '-c', '/mnt/Store/projects/noisedesigner',
             '-n', 'servers',
             '-s', 'NoiseDes')
-    sh.tmux('send', '. pyenv/bin/activate\n')
-    sh.tmux('send', './manage.py runserver 9876\n')
-
-    sh.tmux('split-window', '-h')
-    sh.tmux('send', 'cd /home/julian/projects/noisedesigner\n')
+    sh.tmux('send', 'cd /mnt/Store/projects/noisedesigner\n')
     sh.tmux('send', 'gulp default watch\n')
 
     sh.tmux('new-window',
-            '-n', 'libnoise')
-    sh.tmux('send', 'cd /home/julian/projects/libnoise\n')
-    sh.tmux('send', 'git status\n')
-
-    sh.tmux('new-window',
             '-n', 'noisedesigner')
-    sh.tmux('send', 'cd /home/julian/projects/noisedesigner\n')
+    sh.tmux('send', 'cd /mnt/Store/projects/noisedesigner\n')
     sh.tmux('send', 'git status\n')
 
 print('done')
