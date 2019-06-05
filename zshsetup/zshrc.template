@@ -18,6 +18,7 @@ export PATH=/usr/local/bin:$PATH
 export PATH=$GEM_USER_DIR/bin:$PATH
 export PATH=$ZSH_SETUP_ROOT/bin:$PATH
 export PATH=$APPS_DIR/bin:$PATH
+export PATH=$HOME/.symfony/bin:$PATH
 export PATH=/usr/local/share/webOS_Signage_SDK/CLI/bin:$PATH
 export PATH=/home/julian/apps/tizen-studio/tools/ide/bin:$PATH
 
