@@ -130,36 +130,36 @@ else:
     sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
 
 
-# setup brightsign
-
-if 'BrightSign' in get_sessions():
-    print('BrightSign exists')
-else:
-    print('Creating BrightSign session')
-    sh.tmux('new-session',
-            '-d',
-            '-c', '/home/julian/projects/odm/brightsign-changeconfig',
-            '-n', 'runtools',
-            '-s', 'BrightSign')
-    sh.tmux('send', '. pyenv/bin/activate\n')
-    sh.tmux('split-window', '-h')
-    sh.tmux('send', 'cd /home/julian/projects/odm/brightsign-changeconfig\n')
-    sh.tmux('send', 'cd processed/splinter\n')
-
-    sh.tmux('new-window',
-            '-n', 'edit')
-    sh.tmux('send', 'git status\n')
+## setup brightsign
+#
+#if 'BrightSign' in get_sessions():
+#    print('BrightSign exists')
+#else:
+#    print('Creating BrightSign session')
+#    sh.tmux('new-session',
+#            '-d',
+#            '-c', '/home/julian/projects/odm/brightsign-changeconfig',
+#            '-n', 'runtools',
+#            '-s', 'BrightSign')
+#    sh.tmux('send', '. pyenv/bin/activate\n')
+#    sh.tmux('split-window', '-h')
+#    sh.tmux('send', 'cd /home/julian/projects/odm/brightsign-changeconfig\n')
+#    sh.tmux('send', 'cd processed/splinter\n')
+#
+#    sh.tmux('new-window',
+#            '-n', 'edit')
+#    sh.tmux('send', 'git status\n')
 
 # noise designer
 
-if 'NoiseDes' in get_sessions():
-    print('NoiseDes exists')
-else:
-    sh.tmux('new-session',
-            '-d',
-            '-c', '/home/julian/projects/noisedesigner',
-            '-n', 'main',
-            '-s', 'NoiseDes')
+#if 'NoiseDes' in get_sessions():
+#    print('NoiseDes exists')
+#else:
+#    sh.tmux('new-session',
+#            '-d',
+#            '-c', '/home/julian/projects/noisedesigner',
+#            '-n', 'main',
+#            '-s', 'NoiseDes')
 
 print('done')
 print(get_sessions())
