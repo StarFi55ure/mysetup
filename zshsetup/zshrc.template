@@ -22,6 +22,8 @@ export PATH=$HOME/.symfony/bin:$PATH
 export PATH=/usr/local/share/webOS_Signage_SDK/CLI/bin:$PATH
 export PATH=/home/julian/apps/tizen-studio/tools/ide/bin:$PATH
 
+export DEBFULLNAME="Julian Kennedy"
+
 export ZLE_RPROMPT_INDENT=0
 
 #export POWERLINE_CONFIG_COMMAND=$HOME/.myvim/bundle/powerline/scripts/powerline-config
@@ -121,6 +123,13 @@ autoload -U prompt_julian_setup
 promptinit
 prompt julian
 
+################################################################################
+# Setup ruby devel environment
+# ##############################################################################
+
+# Install ruby gems to user folder
+export GEM_HOME=$HOME/.gems
+export PATH=$HOME/.gems/bin:$PATH
 
 ################################################################################
 # General utility functions
