@@ -25,24 +25,28 @@ source bootstrap/funcs.zsh
 
 # install necessary packages
 
-# build necessary software
+sudp apt install vim-scripts vim-gtk htop tree
+sudo apt install pbuilder debootstrap devscripts
+sudo apt install python3-sh
 
-if [ ! -d $APPS_BUILD_PATH ]; then 
-    mkdir -p $APPS_BUILD_PATH
-fi
-
-software_to_install=(
-    nodejs
-)
-
-for i in $software_to_install; do
-    source bootstrap/builds/$i
-
-    if [[ -n $UPDATE_ONLY ]]; then 
-        ${i}_postbuild
-    else 
-        ${i}_build
-        ${i}_postbuild
-    fi
-done
-
+## build necessary software
+#
+#if [ ! -d $APPS_BUILD_PATH ]; then 
+#    mkdir -p $APPS_BUILD_PATH
+#fi
+#
+#software_to_install=(
+#    nodejs
+#)
+#
+#for i in $software_to_install; do
+#    source bootstrap/builds/$i
+#
+#    if [[ -n $UPDATE_ONLY ]]; then 
+#        ${i}_postbuild
+#    else 
+#        ${i}_build
+#        ${i}_postbuild
+#    fi
+#done
+#
