@@ -27,7 +27,7 @@ alias ve3="virtualenv -p python3 pyenv"
 alias ve2="virtualenv -p python pyenv"
 alias pact="source pyenv/bin/activate"
 
-alias mvn11="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 mvn"
+alias mvn="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 mvn"
 alias untar="tar -xvf "
 alias wget="wget -c "
 alias getpass="openssl rand -base64 20"
