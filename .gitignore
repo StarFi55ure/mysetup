@@ -1,6 +1,3 @@
-data
-julian_custom_bashrc.sh
-julian_custom_zshrc
-tmux.conf
-bootstrap.zsh
-Envs
+bin/py*
+bin/easy_install*
+bin/zsh_prompter

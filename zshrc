@@ -4,7 +4,7 @@
 # setup main environment variables
 ###################################################
 
-export ZSH_SETUP_ROOT=/home/julian/.mysetup/zshsetup
+export ZSH_SETUP_ROOT=/home/julian/.mysetup
 
 export M2_REPO="$HOME/.m2/repository"
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"

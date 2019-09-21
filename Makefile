@@ -1,16 +1,9 @@
 
 .PHONY: all zshsetup
 
-SUBDIRS = zshsetup
-
-all: $(SUBDIRS)
-	@echo "All Done :-)"
+all:
+	./setup
 
 bootstrap:
-	$(MAKE) -C zshsetup bootstrap
-	@echo "Bootstrap done"
-	
-
-$(SUBDIRS):
-	$(MAKE) -C $@
+	./bootstrap/bootstrap.zsh
 

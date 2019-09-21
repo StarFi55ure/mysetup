@@ -48,7 +48,7 @@ cp tmux.conf ~/.tmux.conf
 
 GIT_USER_CONFIG=$ZSH_SETUP_ROOT/gitconfig
 
-if [ -f $HOME/.gitconfig ]; then
+if [ -L $HOME/.gitconfig ]; then
     echo "Removing old gitconfig from home directory"
     rm $HOME/.gitconfig
 fi
@@ -59,9 +59,11 @@ ln -s $GIT_USER_CONFIG $HOME/.gitconfig
 # i3wm Config
 ##################################################################
 
-if [ ! -d $HOME/.i3 ]; then
-    mkdir $HOME/.i3
+if [ -d $HOME/.i3 ]; then
+    rm -fr $HOME/.i3
 fi
+mkdir $HOME/.i3
+
 if [ ! -f $HOME/.i3/config ]; then
     ln -s $ZSH_SETUP_ROOT/i3config $HOME/.i3/config
 fi

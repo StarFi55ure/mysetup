@@ -1,5 +1,0 @@
-
-
-all:
-	./setup.sh
-
