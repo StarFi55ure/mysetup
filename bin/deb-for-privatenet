@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export DEBEMAIL=juliankenn@gmail.com
+export DEBFULLNAME="Julian Kennedy"
+
+
+
