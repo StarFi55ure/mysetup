@@ -23,130 +23,135 @@ else:
             '-s', 'Main')
     sh.tmux('send', "ll\n")
 
-# setup CMSv2
-
-if 'CMSv2' in get_sessions():
-    print("CMSv2 exists")
-else:
-    print("Creating CMSv2 session")
-    sh.tmux('new-session',
-            '-d',
-            '-c', '/home/julian/projects/odm/cmsv2',
-            '-n', 'main',
-            '-s', 'CMSv2')
-
-    sh.tmux('send', 'll\n')
-
-    sh.tmux('new-window',
-            '-n', 'status')
-    sh.tmux('send', 'cd $HOME/projects/odm/cmsv2\n')
-    sh.tmux('send', 'git status\n')
-
+# # setup CMSv2
+# 
+# if 'CMSv2' in get_sessions():
+#     print("CMSv2 exists")
+# else:
+#     print("Creating CMSv2 session")
+#     sh.tmux('new-session',
+#             '-d',
+#             '-c', '/home/julian/projects/odm/cmsv2',
+#             '-n', 'main',
+#             '-s', 'CMSv2')
+# 
+#     sh.tmux('send', 'll\n')
+# 
+#     sh.tmux('new-window',
+#             '-n', 'status')
+#     sh.tmux('send', 'cd $HOME/projects/odm/cmsv2\n')
+#     sh.tmux('send', 'git status\n')
+# 
 # setup GIS
 
-if 'Hyperion' in get_sessions():
-    print('Hyperion exists')
+if 'TerreX' in get_sessions():
+    print('TerreX exists')
 else:
-    print('Creating Hyperion session')
+    print('Creating TerreX session')
     sh.tmux('new-session',
             '-d',
-            '-c', '/mnt/Store/projects/tileoven',
-            '-n', 'tileoven',
-            '-s', 'Hyperion')
-    sh.tmux('send', 'node index.js\n')
+            '-c', '/home/julian/projects/terrexplor',
+            '-n', 'tiles',
+            '-s', 'TerreX')
+    sh.tmux('send', 'cd tiles/server\n')
+    sh.tmux('send', 'pact\n')
+    sh.tmux('send', 'pyenv/bin/tx-tile-server\n')
 
     sh.tmux('new-window',
-            '-n', 'servers')
-    sh.tmux('send', 'cd /mnt/Store/projects/hyperion/tiles/server\n')
-    sh.tmux('send', 'node index.js\n')
+            '-n', 'webpack')
+    sh.tmux('send', 'cd /home/julian/projects/terrexplor/core\n')
+    sh.tmux('send', 'webpack --watch\n')
 
-    sh.tmux('split-window', '-v')
-    sh.tmux('send', 'cd /mnt/Store/projects/hyperion/web\n')
-    sh.tmux('send', 'gulp default watch\n')
+    sh.tmux('split-window', '-h')
+    sh.tmux('send', 'cd /home/julian/projects/terrexplor/core\n')
+
+    sh.tmux('new-window',
+            '-n', 'dbsetup')
+    sh.tmux('send', 'cd /home/julian/projects/terrexplor/dbsetup\n')
 
     sh.tmux('new-window',
             '-n', 'main')
-    sh.tmux('send', 'cd /mnt/Store/projects/hyperion\n')
+    sh.tmux('send', 'cd /home/julian/projects/terrexplor\n')
     sh.tmux('send', 'git status\n')
 
 # setup Arcus
 
-if 'Arcus' in get_sessions():
-    print('Arcus exists')
-else:
-    print('Creating Arcus session')
-    sh.tmux('new-session',
-            '-d',
-            '-c', '/home/julian/projects/odm/arcuscms',
-            '-n', 'main',
-            '-s', 'Arcus')
+# if 'Arcus' in get_sessions():
+#     print('Arcus exists')
+# else:
+#     print('Creating Arcus session')
+#     sh.tmux('new-session',
+#             '-d',
+#             '-c', '/home/julian/projects/odm/arcuscms',
+#             '-n', 'main',
+#             '-s', 'Arcus')
+# 
+#     sh.tmux('new-window',
+#             '-n', 'grunt')
+#     sh.tmux('send', "cd /home/julian/projects/odm/arcuscms\n")
+#     sh.tmux('send', "grunt default watch\n")
+# 
+#     sh.tmux('new-window',
+#             '-n', 'servers')
+#     sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
+#     sh.tmux('send', '. pyenv/bin/activate\n')
+#     sh.tmux('send', './julian_uwsgi\n')
+# 
+#     sh.tmux('split-window', '-h')
+#     sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
+#     sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
+# 
+#     sh.tmux('new-window',
+#             '-n', 'arcusplayer')
+#     sh.tmux('send', 'cd /home/julian/projects/odm/arcusplayer\n')
+#     sh.tmux('send', '. pyenv/bin/activate\n')
+#     sh.tmux('split-window', '-h')
+#     sh.tmux('send', 'cd /home/julian/projects/odm/arcusplayer\n')
+#     sh.tmux('split-window', '-v')
+#     sh.tmux('send', 'cd /var/cache/pbuilder/result\n')
 
-    sh.tmux('new-window',
-            '-n', 'grunt')
-    sh.tmux('send', "cd /home/julian/projects/odm/arcuscms\n")
-    sh.tmux('send', "grunt default watch\n")
+# # setup Atlas
+# 
+# if 'Atlas' in get_sessions():
+#     print('Atlas exists')
+# else:
+#     print('Creating Atlas session')
+# 
+#     sh.tmux('new-session',
+#             '-d',
+#             '-c', '/home/julian/projects/odm/atlas',
+#             '-n', 'main',
+#             '-s', 'Atlas')
+# 
+#     sh.tmux('send', 'git status\n')
+# 
+#     sh.tmux('new-window',
+#             '-n', 'tail')
+#     sh.tmux('send', 'cd /var/log/nginx\n')
+#     sh.tmux('send', 'tail -F -n 100 /var/log/nginx/access.log\n')
+# 
+#     sh.tmux('split-window', '-h')
+#     sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
+#     sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
 
-    sh.tmux('new-window',
-            '-n', 'servers')
-    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
-    sh.tmux('send', '. pyenv/bin/activate\n')
-    sh.tmux('send', './julian_uwsgi\n')
-
-    sh.tmux('split-window', '-h')
-    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
-    sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
-
-    sh.tmux('new-window',
-            '-n', 'arcusplayer')
-    sh.tmux('send', 'cd /home/julian/projects/odm/arcusplayer\n')
-    sh.tmux('send', '. pyenv/bin/activate\n')
-    sh.tmux('split-window', '-h')
-    sh.tmux('send', 'cd /home/julian/projects/odm/arcusplayer\n')
-    sh.tmux('split-window', '-v')
-    sh.tmux('send', 'cd /var/cache/pbuilder/result\n')
-
-# setup Atlas
-
-if 'Atlas' in get_sessions():
-    print('Atlas exists')
-else:
-    print('Creating Atlas session')
-
-    sh.tmux('new-session',
-            '-d',
-            '-c', '/home/julian/projects/odm/atlas',
-            '-n', 'main',
-            '-s', 'Atlas')
-
-    sh.tmux('send', 'git status\n')
-
-    sh.tmux('new-window',
-            '-n', 'tail')
-    sh.tmux('send', 'cd /var/log/nginx\n')
-    sh.tmux('send', 'tail -F -n 100 /var/log/nginx/access.log\n')
-
-    sh.tmux('split-window', '-h')
-    sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
-    sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
-
-# noise designer
-
-if 'NoiseDes' in get_sessions():
-    print('NoiseDes exists')
-else:
-    print('Creating NoiseDesigner session')
-    sh.tmux('new-session',
-            '-d',
-            '-c', '/mnt/Store/projects/noisedesigner',
-            '-n', 'servers',
-            '-s', 'NoiseDes')
-    sh.tmux('send', 'cd /mnt/Store/projects/noisedesigner\n')
-    sh.tmux('send', 'gulp default watch\n')
-
-    sh.tmux('new-window',
-            '-n', 'noisedesigner')
-    sh.tmux('send', 'cd /mnt/Store/projects/noisedesigner\n')
-    sh.tmux('send', 'git status\n')
+# # noise designer
+# 
+# if 'NoiseDes' in get_sessions():
+#     print('NoiseDes exists')
+# else:
+#     print('Creating NoiseDesigner session')
+#     sh.tmux('new-session',
+#             '-d',
+#             '-c', '/mnt/Store/projects/noisedesigner',
+#             '-n', 'servers',
+#             '-s', 'NoiseDes')
+#     sh.tmux('send', 'cd /mnt/Store/projects/noisedesigner\n')
+#     sh.tmux('send', 'gulp default watch\n')
+# 
+#     sh.tmux('new-window',
+#             '-n', 'noisedesigner')
+#     sh.tmux('send', 'cd /mnt/Store/projects/noisedesigner\n')
+#     sh.tmux('send', 'git status\n')
 
 print('done')
 print(get_sessions())
