@@ -15,11 +15,13 @@ alias nicedate="date +'%Y-%m-%d'"
 
 alias sctl="supervisorctl"
 
+# SSH stuff
+
+alias addkeys="ssh-add ~/.ssh/id_rsa_prod"
+
 # editor
-#
 alias v="vim"
 alias gv="gvim"
-
 alias ta="tmux attach"
 
 # environments
