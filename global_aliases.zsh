@@ -10,7 +10,7 @@ alias gpt='git push --tags'
 
 alias ll="ls --color=auto -Flsh"
 
-alias hashr="hash -r"
+alias hr="hash -r"
 alias nicedate="date +'%Y-%m-%d'"
 
 alias sctl="supervisorctl"
