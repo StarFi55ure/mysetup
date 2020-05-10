@@ -36,7 +36,6 @@ alias getpass="openssl rand -base64 20"
 alias sha="shasum -a 256 "
 alias ping="ping -c 5"
 
-alias www="python -m SimpleHTTPServer 7000"
 alias ipe="curl ipinfo.io/ip"
 alias ipa="ip addr"
 

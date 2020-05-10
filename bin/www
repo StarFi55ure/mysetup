@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+
+import http.server as SimpleHTTPServer
+import socketserver as SocketServer
+
+import logging
+
+class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
+
+    def do_GET(self):
+        logging.error(self.headers)
+        super().do_GET()
+
+httpd = SocketServer.TCPServer(("", 7000), GetHandler)
+httpd.serve_forever()
+
+

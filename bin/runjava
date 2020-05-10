@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# From: http://www.vineetmanohar.com/2009/11/3-ways-to-run-java-main-from-maven/
+
+export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64"
+
+classname=$1
+shift
+args=$@
+
+mvn exec:java -Dexec.mainClass="$classname" -Dexec.args="$args" -Dexec.classpathScope=runtime  
+
