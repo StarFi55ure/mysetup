@@ -42,3 +42,4 @@ alias ipa="ip addr"
 # Development
 #
 alias postpsql="sudo -u postgres psql"
+alias ap="ansible-playbook -i inventory"
