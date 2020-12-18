@@ -28,6 +28,7 @@ alias ta="tmux attach"
 alias ve3="virtualenv -p python3 pyenv"
 alias ve2="virtualenv -p python pyenv"
 alias pact="source pyenv/bin/activate"
+alias dact="deactivate"
 
 alias mvn="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64 mvn"
 alias untar="tar -xvf "
