@@ -17,7 +17,7 @@ alias sctl="supervisorctl"
 
 # SSH stuff
 
-alias addkeys="ssh-add ~/.ssh/id_rsa_prod"
+alias addkeys="ssh-add ~/.ssh/id_rsa_prod ~/.ssh/id_rsa_odm"
 
 # editor
 alias v="vim"
@@ -25,6 +25,7 @@ alias gv="gvim"
 alias ta="tmux attach"
 
 # environments
+alias tmp="cd $HOME/tmp"
 alias ve3="virtualenv -p python3 pyenv"
 alias ve2="virtualenv -p python pyenv"
 alias pact="source pyenv/bin/activate"

@@ -11,6 +11,7 @@ class GetHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
         logging.error(self.headers)
         super().do_GET()
 
+print("Opening port: {}".format(7000))
 httpd = SocketServer.TCPServer(("", 7000), GetHandler)
 httpd.serve_forever()
 

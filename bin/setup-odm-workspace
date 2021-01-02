@@ -42,41 +42,41 @@ else:
     sh.tmux('send', 'cd $HOME/projects/odm/cmsv2\n')
     sh.tmux('send', 'git status\n')
 
-# setup TerreX
-
-if 'TerreX' in get_sessions():
-    print('TerreX exists')
-else:
-    print('Creating TerreX session')
-    sh.tmux('new-session',
-            '-d',
-            '-c', '/home/julian/projects/tileoven',
-            '-n', 'tileoven',
-            '-s', 'TerreX')
-    sh.tmux('send', 'node index.js\n')
-
-    sh.tmux('new-window',
-            '-n', 'tiles')
-    sh.tmux('send', 'cd /home/julian/projects/terrexplor/tiles/server\n')
-    sh.tmux('send', 'pact\n')
-    sh.tmux('send', 'pyenv/bin/tx-tile-server\n')
-
-    sh.tmux('new-window',
-            '-n', 'webpack')
-    sh.tmux('send', 'cd /home/julian/projects/terrexplor/core\n')
-    sh.tmux('send', 'webpack --watch\n')
-
-    sh.tmux('split-window', '-h')
-    sh.tmux('send', 'cd /home/julian/projects/terrexplor/core\n')
-
-    sh.tmux('new-window',
-            '-n', 'dbsetup')
-    sh.tmux('send', 'cd /home/julian/projects/terrexplor/dbsetup\n')
-
-    sh.tmux('new-window',
-            '-n', 'main')
-    sh.tmux('send', 'cd /home/julian/projects/terrexplor\n')
-    sh.tmux('send', 'git status\n')
+# # setup TerreX
+# 
+# if 'TerreX' in get_sessions():
+#     print('TerreX exists')
+# else:
+#     print('Creating TerreX session')
+#     sh.tmux('new-session',
+#             '-d',
+#             '-c', '/home/julian/projects/tileoven',
+#             '-n', 'tileoven',
+#             '-s', 'TerreX')
+#     sh.tmux('send', 'node index.js\n')
+# 
+#     sh.tmux('new-window',
+#             '-n', 'tiles')
+#     sh.tmux('send', 'cd /home/julian/projects/terrexplor/tiles/server\n')
+#     sh.tmux('send', 'pact\n')
+#     sh.tmux('send', 'pyenv/bin/tx-tile-server\n')
+# 
+#     sh.tmux('new-window',
+#             '-n', 'webpack')
+#     sh.tmux('send', 'cd /home/julian/projects/terrexplor/core\n')
+#     sh.tmux('send', 'webpack --watch\n')
+# 
+#     sh.tmux('split-window', '-h')
+#     sh.tmux('send', 'cd /home/julian/projects/terrexplor/core\n')
+# 
+#     sh.tmux('new-window',
+#             '-n', 'dbsetup')
+#     sh.tmux('send', 'cd /home/julian/projects/terrexplor/dbsetup\n')
+# 
+#     sh.tmux('new-window',
+#             '-n', 'main')
+#     sh.tmux('send', 'cd /home/julian/projects/terrexplor\n')
+#     sh.tmux('send', 'git status\n')
 
 # setup Arcus
 
@@ -139,29 +139,29 @@ else:
     sh.tmux('send', 'cd /home/julian/projects/odm/arcusapi\n')
     sh.tmux('send', 'tail -f log/arcus-uwsgi/arcus-uwsgi.log\n')
 
-if 'NoiseToolbox' in get_sessions():
-    print('NoiseToolbox exists')
-else:
-    print('Create NoiseToolbox session')
-
-    sh.tmux('new-session',
-            '-d',
-            '-c', '/home/julian/projects/noisetoolbox',
-            '-n', 'main',
-            '-s', 'NoiseToolbox')
-
-    sh.tmux('send', 'git status\n')
-    sh.tmux('send', 'pact\n')
-
-    sh.tmux('split-window', '-h')
-    sh.tmux('send', 'cd $HOME/projects/noisetoolbox\n')
-    sh.tmux('send', 'pact\n')
-    sh.tmux('send', './manage.py runserver 3000\n')
-
-    sh.tmux('new-window',
-            '-n', 'db')
-    sh.tmux('send', 'cd $HOME/projects/noisetoolbox\n')
-    sh.tmux('send', 'pact\n')
+# if 'NoiseToolbox' in get_sessions():
+#     print('NoiseToolbox exists')
+# else:
+#     print('Create NoiseToolbox session')
+# 
+#     sh.tmux('new-session',
+#             '-d',
+#             '-c', '/home/julian/projects/noisetoolbox',
+#             '-n', 'main',
+#             '-s', 'NoiseToolbox')
+# 
+#     sh.tmux('send', 'git status\n')
+#     sh.tmux('send', 'pact\n')
+# 
+#     sh.tmux('split-window', '-h')
+#     sh.tmux('send', 'cd $HOME/projects/noisetoolbox\n')
+#     sh.tmux('send', 'pact\n')
+#     sh.tmux('send', './manage.py runserver 3000\n')
+# 
+#     sh.tmux('new-window',
+#             '-n', 'db')
+#     sh.tmux('send', 'cd $HOME/projects/noisetoolbox\n')
+#     sh.tmux('send', 'pact\n')
 
 
 ## setup brightsign
