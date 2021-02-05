@@ -59,6 +59,7 @@ source $ZSH_SETUP_ROOT/global_aliases.zsh
 setopt extended_glob
 setopt histignorealldups sharehistory
 setopt interactivecomments
+setopt autocd autopushd pushdignoredups
 
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
