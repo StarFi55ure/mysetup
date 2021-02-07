@@ -31,7 +31,7 @@ export ZLE_RPROMPT_INDENT=0
 # set the TERM env variable
 export TERM=xterm-color
 if [ -n $TMUX ]; then
-    export TERM=screen-256color
+    export TERM=xterm-color
 fi
 
 # set some shell paths
