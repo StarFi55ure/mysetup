@@ -29,9 +29,9 @@ export ZLE_RPROMPT_INDENT=0
 #export POWERLINE_CONFIG_COMMAND=$HOME/.myvim/bundle/powerline/scripts/powerline-config
 
 # set the TERM env variable
-export TERM=xterm-color
+export TERM=xterm-256color
 if [ -n $TMUX ]; then
-    export TERM=xterm-color
+    export TERM=xterm-256color
 fi
 
 # set some shell paths
