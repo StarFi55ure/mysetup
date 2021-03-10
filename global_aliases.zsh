@@ -30,7 +30,7 @@ alias sctl="supervisorctl"
 
 # SSH stuff
 
-alias addkeys="ssh-add ~/.ssh/id_rsa_prod ~/.ssh/id_rsa_logimeter ~/.ssh/id_rsa_logimeter_github"
+alias addkeys="ssh-add ~/.ssh/id_rsa_prod ~/.ssh/id_rsa_logimeter ~/.ssh/id_rsa_logimeter_github ~/.ssh/id_rsa_github ~/.ssh/id_rsa_bit"
 
 # editor
 alias v="vim"
