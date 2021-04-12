@@ -52,11 +52,14 @@ alias ping="ping -c 5"
 alias ipe="curl ipinfo.io/ip"
 alias ipa="ip addr"
 
+
 # Development
 #
 alias postpsql="sudo -u postgres psql"
 alias ap="ansible-playbook -i inventory"
+alias ipy="ipython3"
 
 # Logimeter
 
 alias logidb="psql -U logiport -d logiport -h localhost"
+
