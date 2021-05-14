@@ -30,8 +30,6 @@ alias sctl="supervisorctl"
 
 # SSH stuff
 
-alias addkeys="ssh-add ~/.ssh/id_rsa_prod ~/.ssh/id_rsa_logimeter ~/.ssh/id_rsa_logimeter_github ~/.ssh/id_rsa_github ~/.ssh/id_rsa_bit"
-
 # editor
 alias v="vim"
 alias gv="gvim"
@@ -59,7 +57,9 @@ alias ipa="ip addr"
 #
 alias postpsql="sudo -u postgres psql"
 alias ap="ansible-playbook -i inventory"
-
 alias ipy="ipython3"
 
+# Logimeter
+
+alias logidb="psql -U logiport -d logiport -h localhost"
 
