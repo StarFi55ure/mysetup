@@ -57,7 +57,7 @@ else:
 
 # setup Logimeter Work Setup
 
-CELERY_RR_WORKER_CMD = 'celery -A logiport worker -n worker-rr@%h -Q roundrobin -c 1 -l INFO'
+CELERY_RR_WORKER_CMD = 'celery -A logiport worker -n worker1@%h -l INFO'
 if 'Logimeter' in get_sessions():
     print('Logimeter exists')
 else:
