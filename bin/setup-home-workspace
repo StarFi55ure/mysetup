@@ -23,37 +23,37 @@ else:
             '-s', 'Main')
     sh.tmux('send', "ll\n")
 
-# setup TerreXplor
-
-if 'TerreX' in get_sessions():
-    print('TerreX exists')
-else:
-    print('Creating TerreX session')
-    sh.tmux('new-session',
-            '-d',
-            '-c', '/home/julian/projects/terrexplor',
-            '-n', 'tiles',
-            '-s', 'TerreX')
-    sh.tmux('send', 'cd tiles/server\n')
-    sh.tmux('send', 'pact\n')
-    sh.tmux('send', 'pyenv/bin/tx-tile-server\n')
-
-    sh.tmux('new-window',
-            '-n', 'ng-serve')
-    sh.tmux('send', 'cd /home/julian/projects/terrexplor/core/webapp\n')
-    sh.tmux('send', 'ng serve --watch\n')
-
-    sh.tmux('split-window', '-h')
-    sh.tmux('send', 'cd /home/julian/projects/terrexplor/core/webapp\n')
-
-    sh.tmux('new-window',
-            '-n', 'dbsetup')
-    sh.tmux('send', 'cd /home/julian/projects/terrexplor/dbsetup\n')
-
-    sh.tmux('new-window',
-            '-n', 'main')
-    sh.tmux('send', 'cd /home/julian/projects/terrexplor\n')
-    sh.tmux('send', 'git status\n')
+## setup TerreXplor
+#
+#if 'TerreX' in get_sessions():
+#    print('TerreX exists')
+#else:
+#    print('Creating TerreX session')
+#    sh.tmux('new-session',
+#            '-d',
+#            '-c', '/home/julian/projects/terrexplor',
+#            '-n', 'tiles',
+#            '-s', 'TerreX')
+#    sh.tmux('send', 'cd tiles/server\n')
+#    sh.tmux('send', 'pact\n')
+#    sh.tmux('send', 'pyenv/bin/tx-tile-server\n')
+#
+#    sh.tmux('new-window',
+#            '-n', 'ng-serve')
+#    sh.tmux('send', 'cd /home/julian/projects/terrexplor/core/webapp\n')
+#    sh.tmux('send', 'ng serve --watch\n')
+#
+#    sh.tmux('split-window', '-h')
+#    sh.tmux('send', 'cd /home/julian/projects/terrexplor/core/webapp\n')
+#
+#    sh.tmux('new-window',
+#            '-n', 'dbsetup')
+#    sh.tmux('send', 'cd /home/julian/projects/terrexplor/dbsetup\n')
+#
+#    sh.tmux('new-window',
+#            '-n', 'main')
+#    sh.tmux('send', 'cd /home/julian/projects/terrexplor\n')
+#    sh.tmux('send', 'git status\n')
 
 # setup Logimeter Work Setup
 
