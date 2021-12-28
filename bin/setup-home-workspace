@@ -64,7 +64,7 @@ else:
     print('Creating Logimeter session')
     sh.tmux('new-session',
             '-d',
-            '-c', '/home/julian/projects/logimeter/switch',
+            '-c', '/home/julian/projects/switch',
             '-n', 'runserver',
             '-s', 'Logimeter')
     sh.tmux('send', 'pact\n')
@@ -73,7 +73,7 @@ else:
 
     sh.tmux('new-window',
             '-n', 'celery')
-    sh.tmux('send', 'cd /home/julian/projects/logimeter/switch\n')
+    sh.tmux('send', 'cd /home/julian/projects/switch\n')
     sh.tmux('send', 'pact\n')
     sh.tmux('send', 'export DJANGO_SETTINGS_MODULE=logiport.local_settings_dev_jk\n')
     sh.tmux('send', 'cd web\n')
@@ -81,12 +81,12 @@ else:
 
     sh.tmux('new-window',
             '-n', 'db')
-    sh.tmux('send', 'cd /home/julian/projects/logimeter/switch\n')
-    sh.tmux('send', 'psql -d logiport -U logiport -h localhost\n')
+    sh.tmux('send', 'cd /home/julian/projects/switch\n')
+    sh.tmux('send', 'psql -d logiport -U logiport -h develdb.logimeter.com\n')
 
     sh.tmux('new-window',
             '-n', 'main')
-    sh.tmux('send', 'cd /home/julian/projects/logimeter/switch\n')
+    sh.tmux('send', 'cd /home/julian/projects/switch\n')
 
 # # noise designer
 # 
