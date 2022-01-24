@@ -1,0 +1,5 @@
+#!/bin/bash
+
+sudo apt install vim-scripts tmux htop iotop 
+
+sudo apt install python3-sh python3-fabric python3-colorama

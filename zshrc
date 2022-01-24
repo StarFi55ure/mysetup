@@ -26,6 +26,8 @@ export DEBFULLNAME="Julian Kennedy"
 
 export ZLE_RPROMPT_INDENT=0
 
+export DOWNLOAD_KEYSERVER="keyserver.ubuntu.com"
+
 #export POWERLINE_CONFIG_COMMAND=$HOME/.myvim/bundle/powerline/scripts/powerline-config
 
 # set the TERM env variable
