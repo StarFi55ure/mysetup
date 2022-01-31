@@ -37,8 +37,7 @@ alias v="vim"
 alias gv="gvim"
 alias ta="tmux attach"
 
-# environments
-alias tmp="cd $HOME/tmp"
+# Python environments
 alias ve3="virtualenv -p python3 pyenv"
 alias ve2="virtualenv -p python pyenv"
 alias pact="source pyenv/bin/activate"
@@ -58,9 +57,27 @@ alias ipa="ip addr"
 #
 alias postpsql="sudo -u postgres psql"
 alias ap="ansible-playbook -i inventory"
+alias py="python3"
 alias ipy="ipython3"
 
 # Logimeter
 
 alias logidb="psql -U logiport -d logiport -h localhost"
+
+# LXC
+
+alias lcreate='lxc-create'
+alias ldestroy='lxc-destroy'
+alias lstart='lxc-start'
+alias lstop='lxc-stop'
+alias linfo='lxc-info'
+alias lls='lxc-ls -f'
+alias lattach='lxc-attach'
+alias lcopy='lxc-copy'
+alias lexec='lxc-execute'
+alias lexecute='lxc-execute'
+alias ltop='lxc-top'
+
+
+
 
