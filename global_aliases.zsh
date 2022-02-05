@@ -77,7 +77,7 @@ alias lcopy='lxc-copy'
 alias lexec='lxc-execute'
 alias lexecute='lxc-execute'
 alias ltop='lxc-top'
-
+alias lcopy='lxc-copy'
 
 
 
