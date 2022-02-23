@@ -1,6 +1,7 @@
 
 alias ems='cd $ZSH_SETUP_ROOT'
 alias emv='cd $HOME/.myvim'
+alias vimrc='vim $HOME/.vimrc'
 
 # General
 
