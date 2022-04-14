@@ -67,18 +67,18 @@ alias logidb="psql -U logiport -d logiport -h localhost"
 
 # LXC
 
-alias lcreate='lxc-create'
-alias ldestroy='lxc-destroy'
-alias lstart='lxc-start'
-alias lstop='lxc-stop'
-alias linfo='lxc-info'
-alias lls='lxc-ls -f'
-alias lattach='lxc-attach'
-alias lcopy='lxc-copy'
-alias lexec='lxc-execute'
-alias lexecute='lxc-execute'
-alias ltop='lxc-top'
-alias lcopy='lxc-copy'
+alias lcreate='sudo lxc-create'
+alias ldestroy='sudo lxc-destroy'
+alias lstart='sudo lxc-start'
+alias lstop='sudo lxc-stop'
+alias linfo='sudo lxc-info'
+alias lls='sudo lxc-ls -f'
+alias lattach='sudo lxc-attach'
+alias lcopy='sudo lxc-copy'
+alias lexec='sudo lxc-execute'
+alias lexecute='sudo lxc-execute'
+alias ltop='sudo lxc-top'
+alias lcopy='sudo lxc-copy'
 
 
 
