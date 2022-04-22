@@ -21,7 +21,7 @@ else:
             '-c', '/home/julian/projects',
             '-n', 'main',
             '-s', 'Main')
-    sh.tmux('send', "ll\n")
+    #sh.tmux('send', "ll\n")
 
 ## setup TerreXplor
 #
