@@ -3,5 +3,3 @@
 ssh-add ~/.ssh/id_rsa_prod \
     ~/.ssh/id_rsa_bit \
     ~/.ssh/id_rsa_github \
-    ~/.ssh/id_rsa_logimeter \
-    ~/.ssh/id_rsa_logimeter_github

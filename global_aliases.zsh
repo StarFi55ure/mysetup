@@ -57,13 +57,8 @@ alias ipa="ip addr"
 # Development
 #
 alias postpsql="sudo -u postgres psql"
-alias ap="ansible-playbook -i inventory"
 alias py="python3"
 alias ipy="ipython3"
-
-# Logimeter
-
-alias logidb="psql -U logiport -d logiport -h localhost"
 
 # LXC
 
