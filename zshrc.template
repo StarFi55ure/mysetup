@@ -12,21 +12,24 @@ export LESS="-R"
 
 export EDITOR=vim 
 export APPS_DIR=$HOME/apps
-export GEM_USER_DIR=$HOME/.gem/ruby/2.3.0
 
 export PATH=/usr/local/bin:$PATH
-export PATH=$GEM_USER_DIR/bin:$PATH
 export PATH=$ZSH_SETUP_ROOT/bin:$PATH
 export PATH=$APPS_DIR/bin:$PATH
-export PATH=$HOME/.symfony/bin:$PATH
-export PATH=/usr/local/share/webOS_Signage_SDK/CLI/bin:$PATH
-export PATH=/home/julian/apps/tizen-studio/tools/ide/bin:$PATH
 
 export DEBFULLNAME="Julian Kennedy"
 
 export ZLE_RPROMPT_INDENT=0
 
 export DOWNLOAD_KEYSERVER="keyserver.ubuntu.com"
+
+###################################################
+# Setup global variables
+###################################################
+
+for i in $(ls $ZSH_SETUP_ROOT/env/*.bash); do
+    source $i
+done
 
 #export POWERLINE_CONFIG_COMMAND=$HOME/.myvim/bundle/powerline/scripts/powerline-config
 
@@ -46,6 +49,7 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 platform=`uname`
+
 
 ###################################################
 #setup global aliases

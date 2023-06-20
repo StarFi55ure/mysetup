@@ -60,20 +60,10 @@ alias postpsql="sudo -u postgres psql"
 alias py="python3"
 alias ipy="ipython3"
 
-# LXC
+# G Adventures
 
-alias lcreate='sudo lxc-create'
-alias ldestroy='sudo lxc-destroy'
-alias lstart='sudo lxc-start'
-alias lstop='sudo lxc-stop'
-alias linfo='sudo lxc-info'
-alias lls='sudo lxc-ls -f'
-alias lattach='sudo lxc-attach'
-alias lcopy='sudo lxc-copy'
-alias lexec='sudo lxc-execute'
-alias lexecute='sudo lxc-execute'
-alias ltop='sudo lxc-top'
-alias lcopy='sudo lxc-copy'
+alias opsys="$POLARIS_ROOT/polaris/opsys.bash"
+alias polaris="opsys polaris"
 
-
-
+alias okta-staging="okta-awscli --okta-profile staging"
+alias okta-production="okta-awscli --okta-profile production"
