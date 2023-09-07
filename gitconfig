@@ -16,6 +16,7 @@
     c = commit
     ca = commit -a
     co = checkout
+    dc = diff --cached
     b = branch
     ba = branch -av
     p = pull
