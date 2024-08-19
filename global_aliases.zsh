@@ -62,6 +62,8 @@ alias ipy="ipython3"
 
 # G Adventures
 
+alias poldev="cd $POLARIS_ROOT/polaris"
+
 alias opsys="$POLARIS_ROOT/polaris/opsys.bash"
 alias polaris="opsys polaris"
 
