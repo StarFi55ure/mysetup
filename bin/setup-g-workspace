@@ -10,18 +10,42 @@ def get_sessions():
     except sh.ErrorReturnCode_1:
         return []
 
-# setup Main
-
-if 'Main' in get_sessions():
-    print('Main exisis')
-else:
+def setup_main_G_session():
     print('Creating Main Session')
     sh.tmux('new-session',
             '-d',
             '-c', '/home/julian/projects',
             '-n', 'main',
             '-s', 'Main')
-    #sh.tmux('send', "ll\n")
+    sh.tmux('send', "poldev\n")
+    sh.tmux('send', 'pact\n')
+    sh.tmux('split-window', '-h')
+    sh.tmux('send', 'poldev\n')
+    sh.tmux('send', 'pact\n')
+
+    sh.tmux('new-window',
+            '-n', 'containers')
+    sh.tmux('send', 'poldev\n')
+    sh.tmux('send', 'pact\n')
+    sh.tmux('send', 'DJANGO_SETTINGS_MODULE=settings.local_jk PYTHONPATH=$PWD/pysrc/apps:$PWD/pysrc PYTHONSTARTUP=scripts/shell_import.py python pysrc/manage.py shell')
+
+    sh.tmux('split-window', '-h')
+    sh.tmux('send', 'poldev\n')
+    sh.tmux('send', 'pact\n')
+    sh.tmux('send', 'DJANGO_SETTINGS_MODULE=settings.local_jk PYTHONPATH=$PWD/pysrc/apps:$PWD/pysrc PYTHONSTARTUP=scripts/shell_import.py python pysrc/manage.py runserver_plus 0.0.0.0:8000')
+ 
+    sh.tmux('new-window',
+            '-n', 'scratch')
+    sh.tmux('send', 'poldev\n')
+    sh.tmux('send', 'pact\n')
+
+
+# setup Main
+
+if 'Main' in get_sessions():
+    print('Main exisis')
+else:
+    setup_main_G_session()
 
 ## setup TerreXplor
 #
