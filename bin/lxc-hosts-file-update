@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+
+from sh import hostsed
+
+import sys
+
+line = sys.argv[1]
+
+line = line.strip()
+host, ip = line.split(' ')
+print('adding hostname for [{}] resolving to [{}]'.format(host, ip))
+o = hostsed('add', ip, host)
+
+
+

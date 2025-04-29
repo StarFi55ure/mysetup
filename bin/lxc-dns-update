@@ -1,0 +1,6 @@
+#!/bin/bash
+
+lxc-ls -f | awk 'NR>1 {print $1 " " $5}' | while read line; do
+    /home/julian/.mysetup/bin/lxc-hosts-file-update "$line"
+done
+
