@@ -12,16 +12,37 @@ def get_sessions():
 
 # setup Main
 
-if 'Main' in get_sessions():
-    print('Main exisis')
+if 'HomeDev' in get_sessions():
+    print('HomeDev exisis')
 else:
-    print('Creating Main Session')
+    print('Creating HomeDev Session')
     sh.tmux('new-session',
             '-d',
             '-c', '/home/julian/projects',
             '-n', 'main',
-            '-s', 'Main')
-    #sh.tmux('send', "ll\n")
+            '-s', 'HomeDev')
+    sh.tmux('split-window', '-h')
+    sh.tmux('send', 'cd /home/julian/projects\n')
+    sh.tmux('send', 'clear\n')
+
+    # main servers
+    sh.tmux('new-window',
+            '-n', 'servers')
+    sh.tmux('send', 'cd /home/julian/projects/spatializer/src-ui\n')
+    sh.tmux('send', 'ng serve\n')
+
+    sh.tmux('split-window', '-h')
+    sh.tmux('send', 'cd /home/julian/projects/spatializer\n')
+    sh.tmux('send', 'pact\n')
+    sh.tmux('send', 'python src/manage.py runserver 0.0.0.0:8000\n')
+
+    # setup scratch space
+    sh.tmux('new-window',
+            '-n', 'scratch')
+    sh.tmux('send', 'cd /home/julian/projects\n')
+    sh.tmux('send', 'clear\n')
+
+
 
 ## setup TerreXplor
 #
@@ -54,6 +75,9 @@ else:
 #            '-n', 'main')
 #    sh.tmux('send', 'cd /home/julian/projects/terrexplor\n')
 #    sh.tmux('send', 'git status\n')
+
+# setup Spatializer
+
 
 
 print('done')
