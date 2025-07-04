@@ -60,12 +60,3 @@ alias postpsql="sudo -u postgres psql"
 alias py="python3"
 alias ipy="ipython3"
 
-# G Adventures
-
-alias poldev="cd $POLARIS_ROOT/polaris"
-
-alias opsys="$POLARIS_ROOT/polaris/opsys.bash"
-alias polaris="opsys polaris"
-
-alias okta-staging="okta-awscli --okta-profile staging"
-alias okta-production="okta-awscli --okta-profile production"
