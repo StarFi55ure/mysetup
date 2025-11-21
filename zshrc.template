@@ -153,6 +153,13 @@ fi
 # Setup custom scripts for apps bin directory
 #################################################################################
 
+#################################################################################
+# Setup Android SDK
+#################################################################################
+
+export ANDROID_HOME=~/Android/Sdk
+export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
+
 
 #################################################################################
 # Setup FlutterSDK
