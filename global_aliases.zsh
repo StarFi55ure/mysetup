@@ -41,7 +41,7 @@ alias ta="tmux attach"
 # Python environments
 alias ve3="virtualenv -p python3 pyenv"
 alias ve2="virtualenv -p python pyenv"
-alias pact="source pyenv/bin/activate"
+alias pact="source .venv/bin/activate"
 alias dact="deactivate"
 
 alias untar="tar -xvf "

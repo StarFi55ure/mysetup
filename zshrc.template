@@ -157,7 +157,7 @@ fi
 # Setup Android SDK
 #################################################################################
 
-export ANDROID_HOME=~/Android/Sdk
+export ANDROID_HOME=~/AndroidSDK
 export PATH=$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$PATH
 
 
