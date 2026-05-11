@@ -29,10 +29,6 @@ alias ll="ls --color=auto -Flsh"
 alias hr="hash -r"
 alias nicedate="date +'%Y-%m-%d'"
 
-alias sctl="supervisorctl"
-
-# SSH stuff
-
 # editor
 alias v="vim"
 alias gv="gvim"

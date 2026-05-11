@@ -29,7 +29,7 @@ else:
     sh.tmux('new-window',
             '-n', 'servers')
     sh.tmux('send', 'cd /home/julian/projects/spatializer/src-ui\n')
-    sh.tmux('send', 'ng serve\n')
+    sh.tmux('send', 'vite\n')
 
     sh.tmux('split-window', '-h')
     sh.tmux('send', 'cd /home/julian/projects/spatializer\n')
