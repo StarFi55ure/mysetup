@@ -2,6 +2,7 @@
 alias ems='cd $ZSH_SETUP_ROOT'
 alias emv='cd $HOME/.myvim'
 alias vimrc='vim $HOME/.vimrc'
+alias gvimrc='vim $HOME/.gvimrc'
 
 # General
 
@@ -35,8 +36,7 @@ alias gv="gvim"
 alias ta="tmux attach"
 
 # Python environments
-alias ve3="virtualenv -p python3 pyenv"
-alias ve2="virtualenv -p python pyenv"
+alias ve3="uv venv"
 alias pact="source .venv/bin/activate"
 alias dact="deactivate"
 
@@ -56,3 +56,6 @@ alias postpsql="sudo -u postgres psql"
 alias py="python3"
 alias ipy="ipython3"
 
+# Docker 
+
+alias docker-ip="docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'"
