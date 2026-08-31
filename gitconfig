@@ -22,6 +22,7 @@
     p = pull
     pm = push origin master
     d = diff
+    f = fetch
 
 [push]
 	default = matching
